@@ -40,6 +40,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
         >
           <span>📥</span> Importar categorias
         </button>
+
+        <button 
+          className="btn-secondary" 
+          onClick={() => onNavigate('SETTINGS')}
+        >
+          <span>⚙️</span> Configurações
+        </button>
       </div>
 
       <div style={{ marginTop: '60px', textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)' }}>

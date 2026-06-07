@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import type { Player } from '../types';
+import type { Player, GameMode } from '../types';
 
 interface RevealScreenProps {
   players: Player[];
   secretWord: string;
+  secretWordHint?: string;
+  gameMode: GameMode;
+  categoryName: string;
   onFinishReveal: () => void;
 }
 
 export const RevealScreen: React.FC<RevealScreenProps> = ({
   players,
   secretWord,
+  secretWordHint,
+  gameMode,
+  categoryName,
   onFinishReveal,
 }) => {
   const [playerIndex, setPlayerIndex] = useState(0);
@@ -41,6 +47,14 @@ export const RevealScreen: React.FC<RevealScreenProps> = ({
     } else {
       onFinishReveal();
     }
+  };
+
+  // Compute hint for impostor in hint mode
+  const getImpostorHint = () => {
+    if (secretWordHint && secretWordHint.trim()) {
+      return secretWordHint.trim();
+    }
+    return `A resposta pertence à categoria ${categoryName}.`;
   };
 
   return (
@@ -122,16 +136,35 @@ export const RevealScreen: React.FC<RevealScreenProps> = ({
                 }}
               >
                 {currentPlayer.isImpostor ? (
-                  <div style={{ textAlign: 'center' }}>
+                  <div style={{ textAlign: 'center', width: '100%' }}>
                     <div style={{ fontSize: '14px', color: 'var(--primary-red)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '10px' }}>
                       Cuidado!
                     </div>
                     <h1 style={{ color: 'var(--primary-red)', fontSize: '36px', textShadow: '0 0 15px rgba(255, 59, 48, 0.6)', margin: 0, textTransform: 'uppercase' }}>
                       Você é o Impostor
                     </h1>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '12px', maxWidth: '280px', lineHeight: '1.4' }}>
-                      Se misture entre os jogadores comuns e tente descobrir a palavra secreta!
-                    </p>
+                    
+                    {gameMode === 'HINT' ? (
+                      <div 
+                        style={{ 
+                          marginTop: '20px', 
+                          background: 'rgba(255, 59, 48, 0.1)', 
+                          border: '1px solid rgba(255, 59, 48, 0.2)', 
+                          padding: '14px 16px', 
+                          borderRadius: '16px', 
+                          fontSize: '14px', 
+                          color: '#fca5a5',
+                          lineHeight: '1.4',
+                          textAlign: 'left'
+                        }}
+                      >
+                        <strong>Dica:</strong> {getImpostorHint()}
+                      </div>
+                    ) : (
+                      <p style={{ color: 'var(--text-muted)', fontSize: '13.5px', marginTop: '16px', maxWidth: '280px', lineHeight: '1.4' }}>
+                        Se misture entre os jogadores comuns e tente descobrir a palavra secreta!
+                      </p>
+                    )}
                   </div>
                 ) : (
                   <div style={{ textAlign: 'center' }}>

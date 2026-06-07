@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import type { Category } from '../types';
+import type { Category, WordObject } from '../types';
 
 interface ImportScreenProps {
   categories: Category[];
@@ -8,14 +8,15 @@ interface ImportScreenProps {
 }
 
 interface ParsedData {
-  [categoryName: string]: string[];
+  [categoryName: string]: WordObject[];
 }
 
 interface ImportPreviewItem {
   categoryName: string;
   isNew: boolean;
-  newWords: string[];
-  duplicateWords: string[];
+  newWords: WordObject[];
+  updatedWords: WordObject[]; // existing words that will have their hint updated
+  duplicateWords: WordObject[]; // completely ignored duplicates
 }
 
 export const ImportScreen: React.FC<ImportScreenProps> = ({
@@ -28,15 +29,16 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
   const [previewItems, setPreviewItems] = useState<ImportPreviewItem[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Summary counts
+  // Summary statistics counts
   const [summary, setSummary] = useState({
     categoriesCreated: 0,
     categoriesUpdated: 0,
     wordsAdded: 0,
+    hintsUpdated: 0,
     duplicatesIgnored: 0,
   });
 
-  // PARSER LOGIC
+  // PARSER LOGIC WITH OPTIONAL HINT PIPE
   const parseText = (text: string): ParsedData => {
     const lines = text.split(/\r?\n/);
     const parsed: ParsedData = {};
@@ -66,9 +68,27 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
       }
       // Word line
       else if (currentCategory) {
-        // Add if not already parsed in this batch (prevent local batch duplicates)
-        if (!parsed[currentCategory].some((w) => w.toLowerCase() === line.toLowerCase())) {
-          parsed[currentCategory].push(line);
+        let textPart = line;
+        let hintPart: string | undefined = undefined;
+
+        if (line.includes('|')) {
+          const parts = line.split('|');
+          textPart = parts[0].trim();
+          hintPart = parts.slice(1).join('|').trim() || undefined;
+        }
+
+        if (textPart) {
+          // Avoid duplicates in the same import batch
+          const alreadyParsedIdx = parsed[currentCategory].findIndex(
+            (w) => w.text.toLowerCase() === textPart.toLowerCase()
+          );
+
+          if (alreadyParsedIdx === -1) {
+            parsed[currentCategory].push({ text: textPart, hint: hintPart });
+          } else if (hintPart) {
+            // If it has a hint in this batch, keep the one with hint
+            parsed[currentCategory][alreadyParsedIdx].hint = hintPart;
+          }
         }
       }
     }
@@ -97,31 +117,43 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
       );
 
       const parsedWords = parsed[catName];
-      const newWords: string[] = [];
-      const duplicateWords: string[] = [];
+      const newWords: WordObject[] = [];
+      const updatedWords: WordObject[] = [];
+      const duplicateWords: WordObject[] = [];
 
       if (existingCategory) {
-        parsedWords.forEach((word) => {
-          const exists = existingCategory.words.some(
-            (w) => w.toLowerCase() === word.toLowerCase()
+        parsedWords.forEach((parsedWordObj) => {
+          const existingWordObj = existingCategory.words.find(
+            (w) => w.text.toLowerCase() === parsedWordObj.text.toLowerCase()
           );
-          if (exists) {
-            duplicateWords.push(word);
+
+          if (existingWordObj) {
+            // Word exists. Check if we have a new/different hint to merge
+            if (parsedWordObj.hint && parsedWordObj.hint !== existingWordObj.hint) {
+              updatedWords.push(parsedWordObj);
+            } else {
+              duplicateWords.push(parsedWordObj);
+            }
           } else {
-            newWords.push(word);
+            // New word
+            newWords.push(parsedWordObj);
           }
         });
+
         return {
-          categoryName: existingCategory.name, // keep original capitalization
+          categoryName: existingCategory.name, // preserve original casing
           isNew: false,
           newWords,
+          updatedWords,
           duplicateWords,
         };
       } else {
+        // Entirely new category, all words are new
         return {
           categoryName: catName,
           isNew: true,
           newWords: parsedWords,
+          updatedWords: [],
           duplicateWords: [],
         };
       }
@@ -149,28 +181,24 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
       processImportInput(text);
     };
     reader.readAsText(file);
-    // Reset file input value so same file can be uploaded again
-    e.target.value = '';
+    e.target.value = ''; // Reset file input
   };
 
-  // CONFIRM IMPORT OPERATIONS
+  // CONFIRM AND MERGE INTO LOCAL STORAGE
   const handleConfirmImport = () => {
     let newCategoriesCount = 0;
     let updatedCategoriesCount = 0;
     let totalWordsAdded = 0;
+    let totalHintsUpdated = 0;
     let totalDuplicatesIgnored = 0;
 
-    // Deep copy current categories
+    // Deep copy current categories list
     const updatedCategoriesList = [...categories];
 
     previewItems.forEach((item) => {
-      if (item.newWords.length === 0 && !item.isNew) {
-        // No new words and already exists, just count duplicates
-        totalDuplicatesIgnored += item.duplicateWords.length;
-        return;
-      }
-
+      // Calculate stats
       totalWordsAdded += item.newWords.length;
+      totalHintsUpdated += item.updatedWords.length;
       totalDuplicatesIgnored += item.duplicateWords.length;
 
       if (item.isNew) {
@@ -182,21 +210,42 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
           words: item.newWords,
         });
       } else {
-        updatedCategoriesCount++;
-        // Append to existing category
+        if (item.newWords.length > 0 || item.updatedWords.length > 0) {
+          updatedCategoriesCount++;
+        }
+
+        // Merge words in existing category
         const idx = updatedCategoriesList.findIndex(
           (c) => c.name.toLowerCase() === item.categoryName.toLowerCase()
         );
+
         if (idx !== -1) {
+          const currentWords = [...updatedCategoriesList[idx].words];
+
+          // Add new words
+          item.newWords.forEach((newW) => currentWords.push(newW));
+
+          // Update existing hints
+          item.updatedWords.forEach((updW) => {
+            const wordIdx = currentWords.findIndex(
+              (w) => w.text.toLowerCase() === updW.text.toLowerCase()
+            );
+            if (wordIdx !== -1) {
+              currentWords[wordIdx] = {
+                ...currentWords[wordIdx],
+                hint: updW.hint,
+              };
+            }
+          });
+
           updatedCategoriesList[idx] = {
             ...updatedCategoriesList[idx],
-            words: [...updatedCategoriesList[idx].words, ...item.newWords],
+            words: currentWords,
           };
         }
       }
     });
 
-    // Update global state (persisting it to localStorage)
     onUpdateCategories(updatedCategoriesList);
 
     // Save summary statistics
@@ -204,6 +253,7 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
       categoriesCreated: newCategoriesCount,
       categoriesUpdated: updatedCategoriesCount,
       wordsAdded: totalWordsAdded,
+      hintsUpdated: totalHintsUpdated,
       duplicatesIgnored: totalDuplicatesIgnored,
     });
 
@@ -228,9 +278,9 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
       {/* STEP 1: INPUT METHOD */}
       {step === 'INPUT' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-          <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.4' }}>
-            Envie coleções no formato:<br />
-            <code>[Nome Categoria]</code> ou <code>Categoria: Nome Categoria</code> seguido pelas palavras nas linhas abaixo.
+          <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', lineHeight: '1.45' }}>
+            Envie coleções no formato de lista. Adicione dicas utilizando o separador <code>|</code>.<br />
+            Exemplo: <code>Interestelar | Envolve ficção científica e viagem no tempo.</code>
           </p>
 
           {/* Paste Form */}
@@ -238,7 +288,7 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
             <label className="label-title">Colar texto</label>
             <textarea
               className="input-text import-textarea"
-              placeholder={`Exemplo:\n[Comidas]\nPizza\nSushi\nLasanha\n\nCategoria: Filmes\nTitanic\nAvatar`}
+              placeholder={`Exemplo:\n[Comidas]\nPizza | De origem italiana, servida em fatias.\nSushi\nLasanha\n\nCategoria: Filmes\nTitanic | Romance em um grande desastre histórico.\nAvatar`}
               value={importText}
               onChange={(e) => setImportText(e.target.value)}
             />
@@ -247,7 +297,7 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
             </button>
           </form>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '10px 0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '6px 0' }}>
             <hr style={{ flex: 1, border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
             <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>OU</span>
             <hr style={{ flex: 1, border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)' }} />
@@ -277,8 +327,8 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
       {/* STEP 2: PREVIEW */}
       {step === 'PREVIEW' && (
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-          <div className="alert-box">
-            Reveja os itens analisados antes de mesclar na memória do aparelho.
+          <div className="alert-box" style={{ marginBottom: '14px' }}>
+            Reveja os itens analisados antes de mesclar na memória do aparelho. Palavras com dica exibem o ícone 💡.
           </div>
 
           <div style={{ flex: 1, overflowY: 'auto', marginBottom: '20px' }}>
@@ -300,34 +350,63 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
                   </span>
                 </div>
                 
-                {/* Details */}
-                <div style={{ fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <div style={{ color: 'rgba(0, 229, 255, 0.85)' }}>
-                    ✓ {item.newWords.length} palavras novas a serem adicionadas
-                  </div>
+                {/* Details Statistics */}
+                <div style={{ fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '10px' }}>
+                  {item.newWords.length > 0 && (
+                    <div style={{ color: 'rgba(0, 229, 255, 0.85)' }}>
+                      ✓ {item.newWords.length} palavras novas a serem adicionadas
+                    </div>
+                  )}
+                  {item.updatedWords.length > 0 && (
+                    <div style={{ color: '#a259ff' }}>
+                      ⚡ {item.updatedWords.length} dicas a serem atualizadas
+                    </div>
+                  )}
                   {item.duplicateWords.length > 0 && (
-                    <div style={{ color: 'rgba(239, 68, 68, 0.7)' }}>
+                    <div style={{ color: 'rgba(255, 255, 255, 0.35)' }}>
                       ⚠ {item.duplicateWords.length} duplicatas ignoradas
                     </div>
                   )}
                 </div>
 
-                {/* Word list mini preview */}
+                {/* Word list mini preview with hints indicator */}
                 <div
                   style={{
-                    marginTop: '10px',
-                    fontSize: '11px',
+                    fontSize: '12px',
                     color: 'var(--text-muted)',
-                    maxHeight: '80px',
+                    maxHeight: '110px',
                     overflowY: 'auto',
-                    background: 'rgba(0,0,0,0.15)',
-                    padding: '8px',
-                    borderRadius: '8px',
+                    background: 'rgba(0,0,0,0.2)',
+                    padding: '10px',
+                    borderRadius: '10px',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '6px'
                   }}
                 >
-                  {item.newWords.slice(0, 5).join(', ')}
-                  {item.newWords.length > 5 && ' e mais ' + (item.newWords.length - 5) + '...'}
-                  {item.newWords.length === 0 && 'Nenhuma palavra nova.'}
+                  {/* Combine new and updated words for preview */}
+                  {[...item.newWords, ...item.updatedWords].map((w, wIdx) => (
+                    <span 
+                      key={wIdx} 
+                      style={{ 
+                        background: 'rgba(255,255,255,0.04)', 
+                        padding: '2px 6px', 
+                        borderRadius: '6px',
+                        color: 'white',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '2px'
+                      }}
+                      title={w.hint ? `Dica: ${w.hint}` : 'Sem dica'}
+                    >
+                      {w.text} {w.hint ? '💡' : ''}
+                    </span>
+                  ))}
+                  {item.newWords.length === 0 && item.updatedWords.length === 0 && (
+                    <span style={{ fontStyle: 'italic', color: 'var(--text-muted)' }}>
+                      Nenhuma palavra nova ou dica a atualizar.
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -390,6 +469,10 @@ export const ImportScreen: React.FC<ImportScreenProps> = ({
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
                 <span>Palavras novas adicionadas:</span>
                 <strong style={{ color: 'var(--secondary-cyan)' }}>{summary.wordsAdded}</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+                <span>Dicas de palavras atualizadas:</span>
+                <strong style={{ color: '#a259ff' }}>{summary.hintsUpdated}</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
                 <span>Palavras duplicadas ignoradas:</span>

@@ -1,7 +1,12 @@
+export interface WordObject {
+  text: string;
+  hint?: string;
+}
+
 export interface Category {
   id: string;
   name: string;
-  words: string[];
+  words: WordObject[];
 }
 
 export interface Player {
@@ -18,7 +23,7 @@ export type GameScreen =
   | 'REVEAL_PASS' 
   | 'REVEAL_SHOW' 
   | 'GAMEPLAY' 
-  | 'RESULTS';
+  | 'SETTINGS';
 
 export interface CooldownItem {
   word: string;
@@ -30,8 +35,11 @@ export interface CooldownHistory {
   [categoryName: string]: CooldownItem[];
 }
 
+export type GameMode = 'CLASSIC' | 'HINT';
+
 export interface GameConfig {
   categoryId: string;
   players: string[];
   impostorsCount: number;
+  gameMode: GameMode;
 }

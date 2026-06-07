@@ -49,14 +49,6 @@ export const RevealScreen: React.FC<RevealScreenProps> = ({
     }
   };
 
-  // Compute hint for impostor in hint mode
-  const getImpostorHint = () => {
-    if (secretWordHint && secretWordHint.trim()) {
-      return secretWordHint.trim();
-    }
-    return `A resposta pertence à categoria ${categoryName}.`;
-  };
-
   return (
     <div className="screen-container" style={{ justifyContent: 'center' }}>
       
@@ -152,13 +144,18 @@ export const RevealScreen: React.FC<RevealScreenProps> = ({
                           border: '1px solid rgba(255, 59, 48, 0.2)', 
                           padding: '14px 16px', 
                           borderRadius: '16px', 
-                          fontSize: '14px', 
+                          fontSize: '14.5px', 
                           color: '#fca5a5',
-                          lineHeight: '1.4',
+                          lineHeight: '1.5',
                           textAlign: 'left'
                         }}
                       >
-                        <strong>Dica:</strong> {getImpostorHint()}
+                        <div style={{ marginBottom: '6px' }}>
+                          <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Categoria:</span> <strong>{categoryName}</strong>
+                        </div>
+                        <div>
+                          <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Dica:</span> <strong>{secretWordHint || 'Sem dica'}</strong>
+                        </div>
                       </div>
                     ) : (
                       <p style={{ color: 'var(--text-muted)', fontSize: '13.5px', marginTop: '16px', maxWidth: '280px', lineHeight: '1.4' }}>
@@ -168,13 +165,16 @@ export const RevealScreen: React.FC<RevealScreenProps> = ({
                   </div>
                 ) : (
                   <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '12px', color: 'var(--secondary-cyan)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>
+                    <div style={{ fontSize: '12px', color: 'var(--secondary-cyan)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>
                       Sua Palavra Secreta
                     </div>
-                    <h1 style={{ color: 'var(--secondary-cyan)', fontSize: '42px', textShadow: '0 0 15px rgba(0, 229, 255, 0.6)', margin: 0, fontWeight: '900' }}>
+                    <div style={{ color: 'var(--text-muted)', fontSize: '14px', marginBottom: '12px' }}>
+                      Categoria: <span style={{ color: 'white', fontWeight: 'bold' }}>{categoryName}</span>
+                    </div>
+                    <h1 style={{ color: 'var(--secondary-cyan)', fontSize: '38px', textShadow: '0 0 15px rgba(0, 229, 255, 0.6)', margin: '0 0 16px 0', fontWeight: '900', wordBreak: 'break-word' }}>
                       {secretWord}
                     </h1>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '12px', maxWidth: '280px', lineHeight: '1.4' }}>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', maxWidth: '280px', lineHeight: '1.4', margin: '0 auto' }}>
                       Diga pistas que confirmem que você sabe a palavra, mas sem entregá-la de bandeja.
                     </p>
                   </div>

@@ -60,62 +60,77 @@ function App() {
 
   // GAME LAUNCH & WORD SELECTION ENGINE
   const handleStartRound = (config: GameConfig) => {
-    const category = categories.find((c) => c.id === config.categoryId);
-    if (!category || category.words.length === 0) {
-      alert('Erro: Categoria não encontrada ou vazia.');
+    const selectedCategories = categories.filter((c) => config.categoryIds.includes(c.id));
+    if (selectedCategories.length === 0) {
+      alert('Erro: Nenhuma categoria selecionada.');
       return;
     }
 
     const twoHoursAgo = Date.now() - 2 * 60 * 60 * 1000;
-    const categoryName = category.name;
-    const categoryCooldowns = history[categoryName] || [];
 
-    // Filter words that haven't been used in the last 2 hours (comparing text property)
-    const availableWords = category.words.filter((wordObj) => {
-      const cooldownItem = categoryCooldowns.find(
-        (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
-      );
-      // Available if no record or record is older than 2 hours
-      return !cooldownItem || cooldownItem.timestamp < twoHoursAgo;
+    // Collect all candidate words that are not in cooldown in their specific category
+    const availableCandidates: { category: Category; wordObj: WordObject }[] = [];
+
+    selectedCategories.forEach((category) => {
+      const categoryCooldowns = history[category.name] || [];
+      category.words.forEach((wordObj) => {
+        const cooldownItem = categoryCooldowns.find(
+          (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
+        );
+        const isAvailable = !cooldownItem || cooldownItem.timestamp < twoHoursAgo;
+        if (isAvailable) {
+          availableCandidates.push({ category, wordObj });
+        }
+      });
     });
 
+    let chosenCategory: Category;
     let selectedWordObj: WordObject = { text: '' };
 
-    if (availableWords.length > 0) {
-      // Pick random from available words
-      const randIdx = Math.floor(Math.random() * availableWords.length);
-      selectedWordObj = availableWords[randIdx];
+    if (availableCandidates.length > 0) {
+      // Pick random from available candidates
+      const randIdx = Math.floor(Math.random() * availableCandidates.length);
+      const chosen = availableCandidates[randIdx];
+      chosenCategory = chosen.category;
+      selectedWordObj = chosen.wordObj;
     } else {
-      // All words are in cooldown! Show warning and pick the least recently used
+      // All words are in cooldown! Show warning and pick the least recently used across all selected categories
       alert(
-        'Todas as palavras desta categoria foram jogadas nas últimas 2 horas. A palavra menos recente foi repetida para esta rodada.'
+        'Todas as palavras das categorias selecionadas foram jogadas nas últimas 2 horas. A palavra menos recente foi repetida para esta rodada.'
       );
 
-      const categoryWordsSet = new Set(category.words.map((w) => w.text.toLowerCase()));
-      const validHistoryItems = categoryCooldowns.filter((item) =>
-        categoryWordsSet.has(item.word.toLowerCase())
-      );
+      let oldestTimestamp = Infinity;
+      let oldestCandidate: { category: Category; wordObj: WordObject } | null = null;
 
-      if (validHistoryItems.length > 0) {
-        // Find item with minimum timestamp
-        let oldestItem = validHistoryItems[0];
-        for (const item of validHistoryItems) {
-          if (item.timestamp < oldestItem.timestamp) {
-            oldestItem = item;
+      selectedCategories.forEach((category) => {
+        const categoryCooldowns = history[category.name] || [];
+        category.words.forEach((wordObj) => {
+          const cooldownItem = categoryCooldowns.find(
+            (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
+          );
+          const timestamp = cooldownItem ? cooldownItem.timestamp : 0;
+          if (timestamp < oldestTimestamp) {
+            oldestTimestamp = timestamp;
+            oldestCandidate = { category, wordObj };
           }
-        }
-        // Match original spelling
-        selectedWordObj =
-          category.words.find((w) => w.text.toLowerCase() === oldestItem.word.toLowerCase()) ||
-          { text: oldestItem.word };
+        });
+      });
+
+      if (oldestCandidate) {
+        chosenCategory = (oldestCandidate as any).category;
+        selectedWordObj = (oldestCandidate as any).wordObj;
       } else {
         // Fallback safety
-        const randIdx = Math.floor(Math.random() * category.words.length);
-        selectedWordObj = category.words[randIdx];
+        const randCatIdx = Math.floor(Math.random() * selectedCategories.length);
+        chosenCategory = selectedCategories[randCatIdx];
+        const randWordIdx = Math.floor(Math.random() * chosenCategory.words.length);
+        selectedWordObj = chosenCategory.words[randWordIdx];
       }
     }
 
     // Save/Update cooldown history
+    const categoryName = chosenCategory.name;
+    const categoryCooldowns = history[categoryName] || [];
     const updatedCategoryCooldowns = categoryCooldowns.filter(
       (item) => item.word.toLowerCase() !== selectedWordObj.text.toLowerCase()
     );
@@ -155,7 +170,7 @@ function App() {
     // Load Round State
     setRoundState({
       players: preparedPlayers,
-      selectedCategory: category,
+      selectedCategory: chosenCategory,
       secretWord: selectedWordObj.text,
       secretWordHint: selectedWordObj.hint,
       starterName,

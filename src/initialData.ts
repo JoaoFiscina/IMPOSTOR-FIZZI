@@ -572,112 +572,6 @@ export const INITIAL_CATEGORIES: Category[] = [
     ]
   },
   {
-    "id": "cidades-e-lugares",
-    "name": "Cidades e lugares",
-    "words": [
-      {
-        "text": "Salvador",
-        "hint": "axé"
-      },
-      {
-        "text": "Rio de Janeiro",
-        "hint": "morro"
-      },
-      {
-        "text": "São Paulo",
-        "hint": "concreto"
-      },
-      {
-        "text": "Brasília",
-        "hint": "plano"
-      },
-      {
-        "text": "Recife",
-        "hint": "ponte"
-      },
-      {
-        "text": "Fortaleza",
-        "hint": "vento"
-      },
-      {
-        "text": "Belo Horizonte",
-        "hint": "queijo"
-      },
-      {
-        "text": "Manaus",
-        "hint": "floresta"
-      },
-      {
-        "text": "Lisboa",
-        "hint": "calçada"
-      },
-      {
-        "text": "Paris",
-        "hint": "luz"
-      },
-      {
-        "text": "Londres",
-        "hint": "neblina"
-      },
-      {
-        "text": "Nova York",
-        "hint": "pressa"
-      },
-      {
-        "text": "Tóquio",
-        "hint": "neon"
-      },
-      {
-        "text": "Roma",
-        "hint": "pedra"
-      },
-      {
-        "text": "Barcelona",
-        "hint": "arte"
-      },
-      {
-        "text": "Buenos Aires",
-        "hint": "dança"
-      },
-      {
-        "text": "Orlando",
-        "hint": "parque"
-      },
-      {
-        "text": "Las Vegas",
-        "hint": "brilho"
-      },
-      {
-        "text": "Dubai",
-        "hint": "luxo"
-      },
-      {
-        "text": "Cairo",
-        "hint": "deserto"
-      },
-      {
-        "text": "Atenas",
-        "hint": "coluna"
-      },
-      {
-        "text": "Veneza",
-        "hint": "água"
-      },
-      {
-        "text": "Amsterdã",
-        "hint": "bicicleta"
-      },
-      {
-        "text": "Cancún",
-        "hint": "praia"
-      },
-      {
-        "text": "Machu Picchu",
-        "hint": "altitude"
-      }
-    ]
-  },
-  {
     "id": "comidas-brasileiras",
     "name": "Comidas brasileiras",
     "words": [
@@ -1420,218 +1314,6 @@ export const INITIAL_CATEGORIES: Category[] = [
     ]
   },
   {
-    "id": "objetos-de-casa",
-    "name": "Objetos de casa",
-    "words": [
-      {
-        "text": "Geladeira",
-        "hint": "frio"
-      },
-      {
-        "text": "Fogão",
-        "hint": "chama"
-      },
-      {
-        "text": "Micro-ondas",
-        "hint": "rapidez"
-      },
-      {
-        "text": "Sofá",
-        "hint": "descanso"
-      },
-      {
-        "text": "Cama",
-        "hint": "sono"
-      },
-      {
-        "text": "Travesseiro",
-        "hint": "maciez"
-      },
-      {
-        "text": "Espelho",
-        "hint": "reflexo"
-      },
-      {
-        "text": "Chuveiro",
-        "hint": "vapor"
-      },
-      {
-        "text": "Controle remoto",
-        "hint": "distância"
-      },
-      {
-        "text": "Ventilador",
-        "hint": "vento"
-      },
-      {
-        "text": "Liquidificador",
-        "hint": "giro"
-      },
-      {
-        "text": "Airfryer",
-        "hint": "crocância"
-      },
-      {
-        "text": "Panela",
-        "hint": "cozimento"
-      },
-      {
-        "text": "Faca",
-        "hint": "corte"
-      },
-      {
-        "text": "Garfo",
-        "hint": "ponta"
-      },
-      {
-        "text": "Colher",
-        "hint": "sopa"
-      },
-      {
-        "text": "Prato",
-        "hint": "refeição"
-      },
-      {
-        "text": "Copo",
-        "hint": "sede"
-      },
-      {
-        "text": "Vassoura",
-        "hint": "limpeza"
-      },
-      {
-        "text": "Relógio",
-        "hint": "tempo"
-      },
-      {
-        "text": "Lâmpada",
-        "hint": "luz"
-      },
-      {
-        "text": "Carregador",
-        "hint": "bateria"
-      },
-      {
-        "text": "Notebook",
-        "hint": "tela"
-      },
-      {
-        "text": "Fone de ouvido",
-        "hint": "som"
-      },
-      {
-        "text": "Mochila",
-        "hint": "peso"
-      }
-    ]
-  },
-  {
-    "id": "escola-e-faculdade",
-    "name": "Escola e faculdade",
-    "words": [
-      {
-        "text": "Prova",
-        "hint": "tensão"
-      },
-      {
-        "text": "Seminário",
-        "hint": "fala"
-      },
-      {
-        "text": "Slide",
-        "hint": "apresentação"
-      },
-      {
-        "text": "Caneta",
-        "hint": "tinta"
-      },
-      {
-        "text": "Caderno",
-        "hint": "anotação"
-      },
-      {
-        "text": "Mochila",
-        "hint": "carga"
-      },
-      {
-        "text": "Biblioteca",
-        "hint": "silêncio"
-      },
-      {
-        "text": "Professor",
-        "hint": "explicação"
-      },
-      {
-        "text": "Monitoria",
-        "hint": "ajuda"
-      },
-      {
-        "text": "Laboratório",
-        "hint": "prática"
-      },
-      {
-        "text": "Estetoscópio",
-        "hint": "ausculta"
-      },
-      {
-        "text": "Anatomia",
-        "hint": "peça"
-      },
-      {
-        "text": "Fisiologia",
-        "hint": "função"
-      },
-      {
-        "text": "Bioquímica",
-        "hint": "via"
-      },
-      {
-        "text": "Histologia",
-        "hint": "lâmina"
-      },
-      {
-        "text": "Patologia",
-        "hint": "lesão"
-      },
-      {
-        "text": "Farmacologia",
-        "hint": "dose"
-      },
-      {
-        "text": "Plantão",
-        "hint": "madrugada"
-      },
-      {
-        "text": "TCC",
-        "hint": "prazo"
-      },
-      {
-        "text": "Artigo",
-        "hint": "método"
-      },
-      {
-        "text": "Resumo",
-        "hint": "síntese"
-      },
-      {
-        "text": "Flashcard",
-        "hint": "revisão"
-      },
-      {
-        "text": "Estágio",
-        "hint": "rotina"
-      },
-      {
-        "text": "Aula",
-        "hint": "presença"
-      },
-      {
-        "text": "Grupo",
-        "hint": "mensagem"
-      }
-    ]
-  },
-  {
     "id": "profissoes",
     "name": "Profissões",
     "words": [
@@ -1734,536 +1416,6 @@ export const INITIAL_CATEGORIES: Category[] = [
       {
         "text": "Empreendedor",
         "hint": "risco"
-      }
-    ]
-  },
-  {
-    "id": "esportes",
-    "name": "Esportes",
-    "words": [
-      {
-        "text": "Futebol",
-        "hint": "bola"
-      },
-      {
-        "text": "Basquete",
-        "hint": "cesta"
-      },
-      {
-        "text": "Vôlei",
-        "hint": "rede"
-      },
-      {
-        "text": "Tênis",
-        "hint": "raquete"
-      },
-      {
-        "text": "Natação",
-        "hint": "piscina"
-      },
-      {
-        "text": "Surfe",
-        "hint": "onda"
-      },
-      {
-        "text": "Skate",
-        "hint": "manobra"
-      },
-      {
-        "text": "Corrida",
-        "hint": "ritmo"
-      },
-      {
-        "text": "Ciclismo",
-        "hint": "pedal"
-      },
-      {
-        "text": "Boxe",
-        "hint": "luva"
-      },
-      {
-        "text": "MMA",
-        "hint": "octógono"
-      },
-      {
-        "text": "Judô",
-        "hint": "queda"
-      },
-      {
-        "text": "Karatê",
-        "hint": "golpe"
-      },
-      {
-        "text": "Ginástica",
-        "hint": "precisão"
-      },
-      {
-        "text": "Fórmula 1",
-        "hint": "curva"
-      },
-      {
-        "text": "Golfe",
-        "hint": "taco"
-      },
-      {
-        "text": "Beisebol",
-        "hint": "bastão"
-      },
-      {
-        "text": "Rugby",
-        "hint": "choque"
-      },
-      {
-        "text": "Handebol",
-        "hint": "arremesso"
-      },
-      {
-        "text": "Tênis de mesa",
-        "hint": "efeito"
-      },
-      {
-        "text": "Badminton",
-        "hint": "pena"
-      },
-      {
-        "text": "Escalada",
-        "hint": "parede"
-      },
-      {
-        "text": "Triatlo",
-        "hint": "resistência"
-      },
-      {
-        "text": "Hipismo",
-        "hint": "sela"
-      },
-      {
-        "text": "Futsal",
-        "hint": "quadra"
-      }
-    ]
-  },
-  {
-    "id": "futebol",
-    "name": "Futebol",
-    "words": [
-      {
-        "text": "Flamengo",
-        "hint": "vermelho"
-      },
-      {
-        "text": "Corinthians",
-        "hint": "fiel"
-      },
-      {
-        "text": "Palmeiras",
-        "hint": "porco"
-      },
-      {
-        "text": "São Paulo",
-        "hint": "tricolor"
-      },
-      {
-        "text": "Santos",
-        "hint": "praia"
-      },
-      {
-        "text": "Vasco",
-        "hint": "cruz"
-      },
-      {
-        "text": "Botafogo",
-        "hint": "estrela"
-      },
-      {
-        "text": "Fluminense",
-        "hint": "grená"
-      },
-      {
-        "text": "Bahia",
-        "hint": "esquadrão"
-      },
-      {
-        "text": "Vitória",
-        "hint": "leão"
-      },
-      {
-        "text": "Grêmio",
-        "hint": "sul"
-      },
-      {
-        "text": "Internacional",
-        "hint": "colorado"
-      },
-      {
-        "text": "Cruzeiro",
-        "hint": "raposa"
-      },
-      {
-        "text": "Atlético Mineiro",
-        "hint": "galo"
-      },
-      {
-        "text": "Athletico Paranaense",
-        "hint": "furacão"
-      },
-      {
-        "text": "Real Madrid",
-        "hint": "branco"
-      },
-      {
-        "text": "Barcelona",
-        "hint": "catalão"
-      },
-      {
-        "text": "Manchester City",
-        "hint": "azul"
-      },
-      {
-        "text": "Liverpool",
-        "hint": "vermelho"
-      },
-      {
-        "text": "PSG",
-        "hint": "torre"
-      },
-      {
-        "text": "Bayern",
-        "hint": "bávaro"
-      },
-      {
-        "text": "Juventus",
-        "hint": "listras"
-      },
-      {
-        "text": "Milan",
-        "hint": "rossonero"
-      },
-      {
-        "text": "Chelsea",
-        "hint": "londres"
-      },
-      {
-        "text": "Arsenal",
-        "hint": "canhão"
-      }
-    ]
-  },
-  {
-    "id": "jogos-digitais",
-    "name": "Jogos digitais",
-    "words": [
-      {
-        "text": "Minecraft",
-        "hint": "bloco"
-      },
-      {
-        "text": "Fortnite",
-        "hint": "construção"
-      },
-      {
-        "text": "Free Fire",
-        "hint": "queda"
-      },
-      {
-        "text": "League of Legends",
-        "hint": "rota"
-      },
-      {
-        "text": "Valorant",
-        "hint": "mira"
-      },
-      {
-        "text": "Counter-Strike",
-        "hint": "bomba"
-      },
-      {
-        "text": "GTA",
-        "hint": "cidade"
-      },
-      {
-        "text": "FIFA",
-        "hint": "gramado"
-      },
-      {
-        "text": "The Sims",
-        "hint": "vida"
-      },
-      {
-        "text": "Among Us",
-        "hint": "suspeita"
-      },
-      {
-        "text": "Fall Guys",
-        "hint": "tropeço"
-      },
-      {
-        "text": "Roblox",
-        "hint": "criação"
-      },
-      {
-        "text": "Mario Kart",
-        "hint": "casco"
-      },
-      {
-        "text": "Zelda",
-        "hint": "exploração"
-      },
-      {
-        "text": "God of War",
-        "hint": "ira"
-      },
-      {
-        "text": "The Last of Us",
-        "hint": "sobrevivência"
-      },
-      {
-        "text": "Elden Ring",
-        "hint": "desafio"
-      },
-      {
-        "text": "Hogwarts Legacy",
-        "hint": "magia"
-      },
-      {
-        "text": "Red Dead Redemption",
-        "hint": "faroeste"
-      },
-      {
-        "text": "Call of Duty",
-        "hint": "missão"
-      },
-      {
-        "text": "Clash Royale",
-        "hint": "arena"
-      },
-      {
-        "text": "Candy Crush",
-        "hint": "doce"
-      },
-      {
-        "text": "Subway Surfers",
-        "hint": "trilho"
-      },
-      {
-        "text": "Pokémon GO",
-        "hint": "captura"
-      },
-      {
-        "text": "Outer Wilds",
-        "hint": "ciclo"
-      }
-    ]
-  },
-  {
-    "id": "memes-e-internet",
-    "name": "Memes e internet",
-    "words": [
-      {
-        "text": "Nazaré confusa",
-        "hint": "cálculo"
-      },
-      {
-        "text": "Doge",
-        "hint": "cachorro"
-      },
-      {
-        "text": "Caneta azul",
-        "hint": "música"
-      },
-      {
-        "text": "Luísa Sonza chorando",
-        "hint": "drama"
-      },
-      {
-        "text": "Inês Brasil",
-        "hint": "energia"
-      },
-      {
-        "text": "Bora Bill",
-        "hint": "repetição"
-      },
-      {
-        "text": "Luva de Pedreiro",
-        "hint": "receba"
-      },
-      {
-        "text": "Choquei",
-        "hint": "fofoca"
-      },
-      {
-        "text": "Casimiro reagindo",
-        "hint": "live"
-      },
-      {
-        "text": "Barbieheimer",
-        "hint": "mistura"
-      },
-      {
-        "text": "NPC",
-        "hint": "repetição"
-      },
-      {
-        "text": "Cringe",
-        "hint": "geração"
-      },
-      {
-        "text": "Farialimer",
-        "hint": "colete"
-      },
-      {
-        "text": "Shitpost",
-        "hint": "caos"
-      },
-      {
-        "text": "Flopar",
-        "hint": "vazio"
-      },
-      {
-        "text": "Trend",
-        "hint": "moda"
-      },
-      {
-        "text": "Hater",
-        "hint": "crítica"
-      },
-      {
-        "text": "Fanfic",
-        "hint": "invenção"
-      },
-      {
-        "text": "Stalkear",
-        "hint": "curiosidade"
-      },
-      {
-        "text": "Print",
-        "hint": "prova"
-      },
-      {
-        "text": "Áudio acelerado",
-        "hint": "pressa"
-      },
-      {
-        "text": "Figurinha",
-        "hint": "reação"
-      },
-      {
-        "text": "Cancelamento",
-        "hint": "polêmica"
-      },
-      {
-        "text": "TBT",
-        "hint": "memória"
-      },
-      {
-        "text": "Reels",
-        "hint": "rolagem"
-      }
-    ]
-  },
-  {
-    "id": "apps-e-redes-sociais",
-    "name": "Apps e redes sociais",
-    "words": [
-      {
-        "text": "WhatsApp",
-        "hint": "mensagem"
-      },
-      {
-        "text": "Instagram",
-        "hint": "foto"
-      },
-      {
-        "text": "TikTok",
-        "hint": "vídeo"
-      },
-      {
-        "text": "YouTube",
-        "hint": "play"
-      },
-      {
-        "text": "X",
-        "hint": "opinião"
-      },
-      {
-        "text": "Facebook",
-        "hint": "lembrança"
-      },
-      {
-        "text": "Telegram",
-        "hint": "canal"
-      },
-      {
-        "text": "Spotify",
-        "hint": "música"
-      },
-      {
-        "text": "Netflix",
-        "hint": "sofá"
-      },
-      {
-        "text": "Prime Video",
-        "hint": "catálogo"
-      },
-      {
-        "text": "Uber",
-        "hint": "corrida"
-      },
-      {
-        "text": "iFood",
-        "hint": "entrega"
-      },
-      {
-        "text": "Google Maps",
-        "hint": "rota"
-      },
-      {
-        "text": "Waze",
-        "hint": "trânsito"
-      },
-      {
-        "text": "Duolingo",
-        "hint": "coruja"
-      },
-      {
-        "text": "Canva",
-        "hint": "design"
-      },
-      {
-        "text": "Notion",
-        "hint": "página"
-      },
-      {
-        "text": "ChatGPT",
-        "hint": "pergunta"
-      },
-      {
-        "text": "Discord",
-        "hint": "servidor"
-      },
-      {
-        "text": "Twitch",
-        "hint": "live"
-      },
-      {
-        "text": "Pinterest",
-        "hint": "inspiração"
-      },
-      {
-        "text": "LinkedIn",
-        "hint": "carreira"
-      },
-      {
-        "text": "Gmail",
-        "hint": "email"
-      },
-      {
-        "text": "Google Drive",
-        "hint": "nuvem"
-      },
-      {
-        "text": "Vercel",
-        "hint": "deploy"
       }
     ]
   },
@@ -2374,218 +1526,6 @@ export const INITIAL_CATEGORIES: Category[] = [
     ]
   },
   {
-    "id": "coisas-de-viagem",
-    "name": "Coisas de viagem",
-    "words": [
-      {
-        "text": "Passaporte",
-        "hint": "fronteira"
-      },
-      {
-        "text": "Mala",
-        "hint": "bagagem"
-      },
-      {
-        "text": "Aeroporto",
-        "hint": "espera"
-      },
-      {
-        "text": "Avião",
-        "hint": "altitude"
-      },
-      {
-        "text": "Hotel",
-        "hint": "recepção"
-      },
-      {
-        "text": "Hostel",
-        "hint": "beliche"
-      },
-      {
-        "text": "Mapa",
-        "hint": "caminho"
-      },
-      {
-        "text": "Praia",
-        "hint": "areia"
-      },
-      {
-        "text": "Montanha",
-        "hint": "subida"
-      },
-      {
-        "text": "Museu",
-        "hint": "silêncio"
-      },
-      {
-        "text": "Restaurante",
-        "hint": "reserva"
-      },
-      {
-        "text": "Câmbio",
-        "hint": "moeda"
-      },
-      {
-        "text": "Seguro viagem",
-        "hint": "proteção"
-      },
-      {
-        "text": "Guia",
-        "hint": "explicação"
-      },
-      {
-        "text": "Roteiro",
-        "hint": "plano"
-      },
-      {
-        "text": "Check-in",
-        "hint": "entrada"
-      },
-      {
-        "text": "Embarque",
-        "hint": "portão"
-      },
-      {
-        "text": "Turbulência",
-        "hint": "susto"
-      },
-      {
-        "text": "Janela",
-        "hint": "vista"
-      },
-      {
-        "text": "Duty free",
-        "hint": "compra"
-      },
-      {
-        "text": "Transfer",
-        "hint": "chegada"
-      },
-      {
-        "text": "Carimbo",
-        "hint": "documento"
-      },
-      {
-        "text": "Excursão",
-        "hint": "grupo"
-      },
-      {
-        "text": "Souvenir",
-        "hint": "lembrança"
-      },
-      {
-        "text": "Mochilão",
-        "hint": "aventura"
-      }
-    ]
-  },
-  {
-    "id": "lugares-da-cidade",
-    "name": "Lugares da cidade",
-    "words": [
-      {
-        "text": "Shopping",
-        "hint": "vitrine"
-      },
-      {
-        "text": "Cinema",
-        "hint": "pipoca"
-      },
-      {
-        "text": "Praça",
-        "hint": "banco"
-      },
-      {
-        "text": "Parque",
-        "hint": "grama"
-      },
-      {
-        "text": "Hospital",
-        "hint": "cuidado"
-      },
-      {
-        "text": "Farmácia",
-        "hint": "remédio"
-      },
-      {
-        "text": "Padaria",
-        "hint": "pão"
-      },
-      {
-        "text": "Mercado",
-        "hint": "carrinho"
-      },
-      {
-        "text": "Academia",
-        "hint": "treino"
-      },
-      {
-        "text": "Restaurante",
-        "hint": "mesa"
-      },
-      {
-        "text": "Bar",
-        "hint": "copo"
-      },
-      {
-        "text": "Escola",
-        "hint": "aula"
-      },
-      {
-        "text": "Faculdade",
-        "hint": "campus"
-      },
-      {
-        "text": "Igreja",
-        "hint": "sino"
-      },
-      {
-        "text": "Banco",
-        "hint": "senha"
-      },
-      {
-        "text": "Correios",
-        "hint": "pacote"
-      },
-      {
-        "text": "Aeroporto",
-        "hint": "mala"
-      },
-      {
-        "text": "Rodoviária",
-        "hint": "ônibus"
-      },
-      {
-        "text": "Posto de gasolina",
-        "hint": "bomba"
-      },
-      {
-        "text": "Salão de beleza",
-        "hint": "espelho"
-      },
-      {
-        "text": "Estádio",
-        "hint": "torcida"
-      },
-      {
-        "text": "Teatro",
-        "hint": "palco"
-      },
-      {
-        "text": "Biblioteca",
-        "hint": "silêncio"
-      },
-      {
-        "text": "Delegacia",
-        "hint": "ocorrência"
-      },
-      {
-        "text": "Cartório",
-        "hint": "assinatura"
-      }
-    ]
-  },
-  {
     "id": "musica-e-artistas",
     "name": "Música e artistas",
     "words": [
@@ -2692,182 +1632,288 @@ export const INITIAL_CATEGORIES: Category[] = [
     ]
   },
   {
-    "id": "situacoes-engracadas",
-    "name": "Situações engraçadas",
+    "id": "anatomia",
+    "name": "Anatomia",
     "words": [
       {
-        "text": "Chegar atrasado",
-        "hint": "desculpa"
+        "text": "Hipocampo",
+        "hint": "memória"
       },
       {
-        "text": "Mandar mensagem errada",
-        "hint": "pânico"
+        "text": "Amígdala",
+        "hint": "emoção"
       },
       {
-        "text": "Cair em público",
-        "hint": "chão"
+        "text": "Cerebelo",
+        "hint": "equilíbrio"
       },
       {
-        "text": "Esquecer o nome",
-        "hint": "sorriso"
+        "text": "Pâncreas",
+        "hint": "enzima"
       },
       {
-        "text": "Rir em momento sério",
-        "hint": "controle"
+        "text": "Fígado",
+        "hint": "bile"
       },
       {
-        "text": "Fingir que entendeu",
-        "hint": "cabeça"
+        "text": "Baço",
+        "hint": "imunidade"
       },
       {
-        "text": "Tropeçar no nada",
-        "hint": "gravidade"
+        "text": "Córtex",
+        "hint": "pensamento"
       },
       {
-        "text": "Dormir na aula",
-        "hint": "luta"
+        "text": "Tálamo",
+        "hint": "retransmissão"
       },
       {
-        "text": "Perder o ônibus",
-        "hint": "corrida"
+        "text": "Hipotálamo",
+        "hint": "fome"
       },
       {
-        "text": "Errar a sala",
-        "hint": "porta"
+        "text": "Miocárdio",
+        "hint": "contração"
       },
       {
-        "text": "Acenar para desconhecido",
-        "hint": "vergonha"
+        "text": "Pulmão",
+        "hint": "ar"
       },
       {
-        "text": "Celular descarregar",
-        "hint": "desespero"
+        "text": "Rim",
+        "hint": "filtro"
       },
       {
-        "text": "Microfone aberto",
-        "hint": "exposição"
+        "text": "Adrenal",
+        "hint": "estresse"
       },
       {
-        "text": "Cantar errado",
-        "hint": "confiança"
+        "text": "Medula",
+        "hint": "reflexo"
       },
       {
-        "text": "Confundir gêmeos",
-        "hint": "dúvida"
-      },
-      {
-        "text": "Responder grupo errado",
-        "hint": "caos"
-      },
-      {
-        "text": "Falar sozinho",
-        "hint": "ensaio"
-      },
-      {
-        "text": "Chamar professor de mãe",
-        "hint": "trauma"
-      },
-      {
-        "text": "Usar roupa do avesso",
-        "hint": "distração"
-      },
-      {
-        "text": "Esquecer aniversário",
-        "hint": "perigo"
-      },
-      {
-        "text": "Queimar comida",
-        "hint": "fumaça"
-      },
-      {
-        "text": "Derrubar bebida",
-        "hint": "mesa"
-      },
-      {
-        "text": "Pisar no chiclete",
-        "hint": "azar"
-      },
-      {
-        "text": "Travou na apresentação",
-        "hint": "silêncio"
-      },
-      {
-        "text": "Rir da própria piada",
-        "hint": "orgulho"
+        "text": "Retina",
+        "hint": "visão"
       }
     ]
   },
   {
-    "id": "medicina-e-hospital",
-    "name": "Medicina e hospital",
+    "id": "doencas-classicas",
+    "name": "Doenças clássicas",
     "words": [
       {
-        "text": "Estetoscópio",
-        "hint": "escuta"
+        "text": "Tuberculose",
+        "hint": "tosse"
       },
       {
-        "text": "Jaleco",
-        "hint": "bolso"
+        "text": "Diabetes",
+        "hint": "glicose"
       },
       {
-        "text": "Plantão",
-        "hint": "madrugada"
+        "text": "Hipertensão",
+        "hint": "pressão"
       },
       {
-        "text": "Prontuário",
-        "hint": "registro"
+        "text": "Asma",
+        "hint": "chiado"
       },
       {
-        "text": "Receita",
-        "hint": "orientação"
+        "text": "Pneumonia",
+        "hint": "febre"
       },
       {
-        "text": "Seringa",
-        "hint": "aplicação"
+        "text": "Apendicite",
+        "hint": "dor"
       },
       {
-        "text": "Curativo",
-        "hint": "proteção"
+        "text": "Dengue",
+        "hint": "plaqueta"
       },
       {
-        "text": "Sutura",
-        "hint": "fio"
+        "text": "Anemia",
+        "hint": "palidez"
       },
       {
-        "text": "Bisturi",
-        "hint": "corte"
+        "text": "AVC",
+        "hint": "déficit"
       },
       {
-        "text": "Luvas",
-        "hint": "barreira"
+        "text": "Infarto",
+        "hint": "aperto"
       },
       {
-        "text": "Máscara",
-        "hint": "proteção"
+        "text": "Meningite",
+        "hint": "rigidez"
       },
       {
-        "text": "Internato",
-        "hint": "prática"
+        "text": "Sepse",
+        "hint": "choque"
       },
       {
-        "text": "Residência",
-        "hint": "seleção"
+        "text": "Cirrose",
+        "hint": "ascite"
       },
       {
-        "text": "Ambulância",
-        "hint": "sirene"
+        "text": "Trombose",
+        "hint": "edema"
       },
       {
-        "text": "Emergência",
-        "hint": "pressa"
+        "text": "Hanseníase",
+        "hint": "sensibilidade"
+      }
+    ]
+  },
+  {
+    "id": "emergencias-medicas",
+    "name": "Emergências médicas",
+    "words": [
+      {
+        "text": "Parada cardiorrespiratória",
+        "hint": "compressão"
       },
       {
-        "text": "Centro cirúrgico",
-        "hint": "campo"
+        "text": "Anafilaxia",
+        "hint": "adrenalina"
       },
       {
-        "text": "UTI",
-        "hint": "monitor"
+        "text": "Choque séptico",
+        "hint": "lactato"
+      },
+      {
+        "text": "Pneumotórax hipertensivo",
+        "hint": "desvio"
+      },
+      {
+        "text": "Tamponamento cardíaco",
+        "hint": "pulso"
+      },
+      {
+        "text": "Crise convulsiva",
+        "hint": "benzodiazepínico"
+      },
+      {
+        "text": "Hipoglicemia",
+        "hint": "glicose"
+      },
+      {
+        "text": "AVC isquêmico",
+        "hint": "janela"
+      },
+      {
+        "text": "IAM",
+        "hint": "troponina"
+      },
+      {
+        "text": "TEP",
+        "hint": "dispneia"
+      },
+      {
+        "text": "Trauma cranioencefálico",
+        "hint": "Glasgow"
+      },
+      {
+        "text": "Queimadura",
+        "hint": "superfície"
+      },
+      {
+        "text": "Cetoacidose diabética",
+        "hint": "cetona"
+      },
+      {
+        "text": "Edema agudo de pulmão",
+        "hint": "espuma"
+      },
+      {
+        "text": "Intoxicação",
+        "hint": "antídoto"
+      }
+    ]
+  },
+  {
+    "id": "cirurgia",
+    "name": "Cirurgia",
+    "words": [
+      {
+        "text": "Apendicectomia",
+        "hint": "fossa"
+      },
+      {
+        "text": "Colecistectomia",
+        "hint": "bile"
+      },
+      {
+        "text": "Herniorrafia",
+        "hint": "tela"
+      },
+      {
+        "text": "Laparotomia",
+        "hint": "incisão"
+      },
+      {
+        "text": "Drenagem torácica",
+        "hint": "selo"
+      },
+      {
+        "text": "Debridamento",
+        "hint": "necrose"
+      },
+      {
+        "text": "Fasciotomia",
+        "hint": "compartimento"
+      },
+      {
+        "text": "Anastomose",
+        "hint": "sutura"
+      },
+      {
+        "text": "Ileostomia",
+        "hint": "estoma"
+      },
+      {
+        "text": "Traqueostomia",
+        "hint": "via"
+      },
+      {
+        "text": "Toracotomia",
+        "hint": "tórax"
+      },
+      {
+        "text": "Amputação",
+        "hint": "coto"
+      },
+      {
+        "text": "Hemostasia",
+        "hint": "sangramento"
+      },
+      {
+        "text": "Abscesso",
+        "hint": "pus"
+      },
+      {
+        "text": "Peritonite",
+        "hint": "defesa"
+      }
+    ]
+  },
+  {
+    "id": "exames-e-diagnosticos",
+    "name": "Exames e diagnósticos",
+    "words": [
+      {
+        "text": "Hemograma",
+        "hint": "células"
+      },
+      {
+        "text": "Gasometria",
+        "hint": "pH"
+      },
+      {
+        "text": "Troponina",
+        "hint": "coração"
+      },
+      {
+        "text": "Eletrocardiograma",
+        "hint": "ritmo"
       },
       {
         "text": "Radiografia",
@@ -2878,28 +1924,172 @@ export const INITIAL_CATEGORIES: Category[] = [
         "hint": "corte"
       },
       {
-        "text": "Ultrassom",
+        "text": "Ressonância",
+        "hint": "campo"
+      },
+      {
+        "text": "Ultrassonografia",
         "hint": "som"
       },
       {
-        "text": "Eletrocardiograma",
-        "hint": "traçado"
+        "text": "Colonoscopia",
+        "hint": "cólon"
       },
       {
-        "text": "Anamnese",
-        "hint": "história"
+        "text": "Endoscopia",
+        "hint": "câmera"
       },
       {
-        "text": "Exame físico",
-        "hint": "inspeção"
+        "text": "PCR",
+        "hint": "inflamação"
       },
       {
-        "text": "Diagnóstico",
-        "hint": "hipótese"
+        "text": "Creatinina",
+        "hint": "rim"
       },
       {
-        "text": "Alta",
-        "hint": "saída"
+        "text": "Bilirrubina",
+        "hint": "icterícia"
+      },
+      {
+        "text": "D-dímero",
+        "hint": "coágulo"
+      },
+      {
+        "text": "Lactato",
+        "hint": "perfusão"
+      }
+    ]
+  },
+  {
+    "id": "medicamentos",
+    "name": "Medicamentos",
+    "words": [
+      {
+        "text": "Adrenalina",
+        "hint": "choque"
+      },
+      {
+        "text": "Noradrenalina",
+        "hint": "pressão"
+      },
+      {
+        "text": "Morfina",
+        "hint": "dor"
+      },
+      {
+        "text": "Dipirona",
+        "hint": "febre"
+      },
+      {
+        "text": "Ceftriaxona",
+        "hint": "bactéria"
+      },
+      {
+        "text": "Vancomicina",
+        "hint": "gram"
+      },
+      {
+        "text": "Heparina",
+        "hint": "anticoagulação"
+      },
+      {
+        "text": "Insulina",
+        "hint": "glicose"
+      },
+      {
+        "text": "Furosemida",
+        "hint": "diurese"
+      },
+      {
+        "text": "Omeprazol",
+        "hint": "ácido"
+      },
+      {
+        "text": "Salbutamol",
+        "hint": "bronco"
+      },
+      {
+        "text": "Prednisona",
+        "hint": "corticoide"
+      },
+      {
+        "text": "Amoxicilina",
+        "hint": "antibiótico"
+      },
+      {
+        "text": "Diazepam",
+        "hint": "sedação"
+      },
+      {
+        "text": "Metformina",
+        "hint": "diabetes"
+      }
+    ]
+  },
+  {
+    "id": "especialidades-medicas",
+    "name": "Especialidades médicas",
+    "words": [
+      {
+        "text": "Cardiologia",
+        "hint": "coração"
+      },
+      {
+        "text": "Neurologia",
+        "hint": "cérebro"
+      },
+      {
+        "text": "Cirurgia geral",
+        "hint": "bisturi"
+      },
+      {
+        "text": "Pediatria",
+        "hint": "criança"
+      },
+      {
+        "text": "Ginecologia",
+        "hint": "útero"
+      },
+      {
+        "text": "Obstetrícia",
+        "hint": "parto"
+      },
+      {
+        "text": "Dermatologia",
+        "hint": "pele"
+      },
+      {
+        "text": "Psiquiatria",
+        "hint": "mente"
+      },
+      {
+        "text": "Ortopedia",
+        "hint": "osso"
+      },
+      {
+        "text": "Oftalmologia",
+        "hint": "olho"
+      },
+      {
+        "text": "Otorrinolaringologia",
+        "hint": "ouvido"
+      },
+      {
+        "text": "Urologia",
+        "hint": "próstata"
+      },
+      {
+        "text": "Reumatologia",
+        "hint": "articulação"
+      },
+      {
+        "text": "Infectologia",
+        "hint": "micróbio"
+      },
+      {
+        "text": "Radiologia",
+        "hint": "imagem"
       }
     ]
   }

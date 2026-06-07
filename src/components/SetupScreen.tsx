@@ -7,10 +7,15 @@ interface SetupScreenProps {
 }
 
 export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRound }) => {
+  const [selectionMode, setSelectionMode] = useState<'SINGLE' | 'MULTI'>('SINGLE');
+
   // Select first category as default if available
   const [selectedCategoryId, setSelectedCategoryId] = useState(
     categories.length > 0 ? categories[0].id : ''
   );
+  
+  // Selected categories for multi-select
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
 
   // Initial list of players
   const [playerNames, setPlayerNames] = useState<string[]>(['Jogador 1', 'Jogador 2', 'Jogador 3']);
@@ -18,6 +23,28 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
   const [gameMode, setGameMode] = useState<GameMode>('CLASSIC');
 
   const selectedCategory = categories.find((c) => c.id === selectedCategoryId);
+
+  const handleToggleCategory = (catId: string) => {
+    if (selectedCategoryIds.includes(catId)) {
+      setSelectedCategoryIds(selectedCategoryIds.filter(id => id !== catId));
+    } else {
+      setSelectedCategoryIds([...selectedCategoryIds, catId]);
+    }
+  };
+
+  const handleSelectAll = () => {
+    setSelectedCategoryIds(categories.map(c => c.id));
+  };
+
+  const handleClearSelection = () => {
+    setSelectedCategoryIds([]);
+  };
+
+  const totalWords = selectionMode === 'SINGLE' 
+    ? (selectedCategory?.words.length || 0)
+    : categories
+        .filter(c => selectedCategoryIds.includes(c.id))
+        .reduce((sum, c) => sum + c.words.length, 0);
 
   // Sync impostors count if players list shrinks
   useEffect(() => {
@@ -56,14 +83,30 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!selectedCategoryId) {
-      alert('Por favor, crie e selecione uma categoria primeiro.');
-      return;
-    }
+    let finalCategoryIds: string[] = [];
 
-    if (!selectedCategory || selectedCategory.words.length === 0) {
-      alert('A categoria selecionada não possui nenhuma palavra! Por favor, adicione palavras ou escolha outra categoria.');
-      return;
+    if (selectionMode === 'SINGLE') {
+      if (!selectedCategoryId) {
+        alert('Por favor, selecione uma categoria.');
+        return;
+      }
+      const cat = categories.find((c) => c.id === selectedCategoryId);
+      if (!cat || cat.words.length === 0) {
+        alert('A categoria selecionada não possui palavras! Por favor, escolha outra.');
+        return;
+      }
+      finalCategoryIds = [selectedCategoryId];
+    } else {
+      if (selectedCategoryIds.length === 0) {
+        alert('Por favor, selecione pelo menos uma categoria.');
+        return;
+      }
+      const nonEmptySelected = categories.filter(c => selectedCategoryIds.includes(c.id) && c.words.length > 0);
+      if (nonEmptySelected.length === 0) {
+        alert('Nenhuma das categorias selecionadas possui palavras! Adicione palavras a elas primeiro.');
+        return;
+      }
+      finalCategoryIds = selectedCategoryIds;
     }
 
     // Clean names and validate
@@ -89,7 +132,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
 
     // Pass configuration up to trigger round launch
     onStartRound({
-      categoryId: selectedCategoryId,
+      categoryIds: finalCategoryIds,
       players: cleanedNames,
       impostorsCount,
       gameMode,
@@ -105,24 +148,118 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
         {/* Category Pick */}
         <div className="card-glass">
           <label className="label-title">Coleção de Palavras</label>
-          <select
-            className="input-text"
-            style={{ appearance: 'none', background: 'rgba(255,255,255,0.05) url("data:image/svg+xml;utf8,<svg fill=\'white\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/><path d=\'M0 0h24v24H0z\' fill=\'none\'/></svg>") no-repeat right 16px center' }}
-            value={selectedCategoryId}
-            onChange={(e) => setSelectedCategoryId(e.target.value)}
-          >
-            {categories.map((c) => (
-              <option key={c.id} value={c.id} style={{ backgroundColor: '#12141c', color: 'white' }}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-          {selectedCategory && (
-            <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '8px', display: 'flex', justifyContent: 'space-between' }}>
-              <span>Palavras nesta categoria:</span>
-              <strong style={{ color: 'var(--secondary-cyan)' }}>{selectedCategory.words.length}</strong>
+          
+          {/* Mode Selector */}
+          <div className="tabs-container" style={{ marginBottom: '16px' }}>
+            <button
+              type="button"
+              className={`tab-btn ${selectionMode === 'SINGLE' ? 'active' : ''}`}
+              style={{ padding: '8px 12px', fontSize: '13px' }}
+              onClick={() => setSelectionMode('SINGLE')}
+            >
+              Categoria Única
+            </button>
+            <button
+              type="button"
+              className={`tab-btn ${selectionMode === 'MULTI' ? 'active' : ''}`}
+              style={{ padding: '8px 12px', fontSize: '13px' }}
+              onClick={() => setSelectionMode('MULTI')}
+            >
+              Múltiplas ({selectedCategoryIds.length})
+            </button>
+          </div>
+
+          {selectionMode === 'SINGLE' ? (
+            <div>
+              <select
+                className="input-text"
+                style={{ appearance: 'none', background: 'rgba(255,255,255,0.05) url("data:image/svg+xml;utf8,<svg fill=\'white\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/><path d=\'M0 0h24v24H0z\' fill=\'none\'/></svg>") no-repeat right 16px center' }}
+                value={selectedCategoryId}
+                onChange={(e) => setSelectedCategoryId(e.target.value)}
+              >
+                <option value="" disabled style={{ backgroundColor: '#12141c', color: 'white' }}>Selecione uma categoria</option>
+                {categories.map((c) => (
+                  <option key={c.id} value={c.id} style={{ backgroundColor: '#12141c', color: 'white' }}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <div>
+              {/* Quick action buttons */}
+              <div style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  style={{ padding: '8px 12px', fontSize: '12px', flex: 1, minHeight: '36px' }}
+                  onClick={handleSelectAll}
+                >
+                  ☑ Selecionar todas
+                </button>
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  style={{ padding: '8px 12px', fontSize: '12px', flex: 1, minHeight: '36px' }}
+                  onClick={handleClearSelection}
+                >
+                  ☒ Limpar seleção
+                </button>
+              </div>
+
+              {/* Scrollable list of categories with checkboxes */}
+              <div style={{ 
+                maxHeight: '180px', 
+                overflowY: 'auto', 
+                paddingRight: '4px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px'
+              }}>
+                {categories.map((c) => {
+                  const isChecked = selectedCategoryIds.includes(c.id);
+                  return (
+                    <div
+                      key={c.id}
+                      onClick={() => handleToggleCategory(c.id)}
+                      className={`list-item ${isChecked ? 'selected' : ''}`}
+                      style={{ 
+                        margin: 0, 
+                        padding: '10px 14px', 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        borderRadius: '12px',
+                        border: isChecked ? '1px solid var(--secondary-cyan)' : '1px solid rgba(255, 255, 255, 0.05)'
+                      }}
+                    >
+                      <span style={{ fontSize: '14px', fontWeight: '500' }}>{c.name}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{c.words.length} pal.</span>
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => {}} // handled by parent onClick
+                          style={{
+                            width: '16px',
+                            height: '16px',
+                            accentColor: 'var(--secondary-cyan)',
+                            cursor: 'pointer'
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
+
+          {/* Words and Categories Summary */}
+          <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '12px', display: 'flex', justifyContent: 'space-between' }}>
+            <span>Total de palavras disponíveis:</span>
+            <strong style={{ color: 'var(--secondary-cyan)' }}>{totalWords}</strong>
+          </div>
         </div>
 
         {/* Game Mode Pick */}

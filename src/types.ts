@@ -38,7 +38,7 @@ export interface CooldownHistory {
 export type GameMode = 'CLASSIC' | 'HINT';
 
 export interface GameConfig {
-  categoryId: string;
+  categoryIds: string[];
   players: string[];
   impostorsCount: number;
   gameMode: GameMode;

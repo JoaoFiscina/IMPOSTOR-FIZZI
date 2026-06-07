@@ -640,3 +640,30 @@ h1, h2, h3, h4 {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* Back Button styling with comfortable touch target and hover/active states */
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--secondary-cyan);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-left: -10px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  z-index: 100;
+}
+
+.back-btn:hover {
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.back-btn:active {
+  background: rgba(0, 229, 255, 0.15);
+  transform: scale(0.95);
+}

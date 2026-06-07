@@ -20,33 +20,24 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, onBack }) => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '16px 20px',
+      paddingTop: 'calc(env(safe-area-inset-top, 0px) + 16px)',
+      paddingLeft: 'calc(env(safe-area-inset-left, 0px) + 20px)',
+      paddingRight: 'calc(env(safe-area-inset-right, 0px) + 20px)',
+      paddingBottom: '16px',
       borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
       background: 'rgba(10, 11, 14, 0.6)',
       backdropFilter: 'blur(10px)',
+      WebkitBackdropFilter: 'blur(10px)',
       position: 'sticky',
       top: 0,
       zIndex: 50,
       minHeight: '68px'
     }}>
-      <div style={{ width: '40px', display: 'flex', alignItems: 'center' }}>
+      <div style={{ width: '44px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
         {showBack && (
           <button 
             onClick={onBack}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'var(--secondary-cyan)',
-              fontSize: '24px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '8px',
-              marginLeft: '-8px',
-              marginTop: '4px',
-              transition: 'transform 0.1s ease'
-            }}
+            className="back-btn"
             aria-label="Voltar"
           >
             ←
@@ -78,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, onBack }) => {
         </h1>
       </div>
 
-      <div style={{ width: '40px' }} /> {/* Symmetry spacer */}
+      <div style={{ width: '44px' }} /> {/* Symmetry spacer */}
     </header>
   );
 };

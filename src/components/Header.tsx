@@ -44,6 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, onBack }) => {
               justifyContent: 'center',
               padding: '8px',
               marginLeft: '-8px',
+              marginTop: '4px',
               transition: 'transform 0.1s ease'
             }}
             aria-label="Voltar"

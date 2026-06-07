@@ -1,0 +1,738 @@
+Categoria: Filmes
+Interestelar | tempo
+Titanic | romance
+Shrek | verde
+Avatar | planeta
+Matrix | escolha
+Gladiador | honra
+Barbie | plástico
+Oppenheimer | silêncio
+Cidade de Deus | destino
+Tropa de Elite | ordem
+Central do Brasil | estrada
+O Auto da Compadecida | juízo
+Parasita | escada
+Coringa | riso
+Batman | sombra
+Homem-Aranha | altura
+Vingadores | união
+Frozen | gelo
+Toy Story | brinquedo
+Procurando Nemo | oceano
+Rei Leão | ciclo
+Harry Potter | escola
+Senhor dos Anéis | jornada
+Star Wars | força
+Jurassic Park | ilha
+De Volta para o Futuro | relógio
+A Origem | sonho
+Clube da Luta | regra
+Forrest Gump | corrida
+La La Land | dança
+
+Categoria: Séries
+Breaking Bad | química
+Game of Thrones | trono
+Stranger Things | portal
+Friends | sofá
+The Office | escritório
+Black Mirror | tela
+Dark | ciclo
+The Last of Us | fungo
+La Casa de Papel | máscara
+Round 6 | infância
+Peaky Blinders | lâmina
+Sherlock | lógica
+Grey's Anatomy | plantão
+House | diagnóstico
+The Boys | poder
+Loki | variante
+Wandinha | gótico
+Bridgerton | baile
+Narcos | cartel
+The Crown | coroa
+How I Met Your Mother | bar
+Brooklyn Nine-Nine | delegacia
+Prison Break | fuga
+Lost | ilha
+Supernatural | estrada
+The Walking Dead | sobrevivência
+Euphoria | brilho
+Better Call Saul | advogado
+Modern Family | família
+Sex Education | escola
+
+Categoria: Animações e desenhos
+Bob Esponja | abacaxi
+Pica-Pau | risada
+Tom e Jerry | perseguição
+Scooby-Doo | mistério
+Os Simpsons | amarelo
+Futurama | futuro
+Rick and Morty | portal
+Ben 10 | relógio
+Naruto | vila
+Dragon Ball | energia
+Pokémon | captura
+Yu-Gi-Oh | carta
+Cavaleiros do Zodíaco | armadura
+Hora de Aventura | espada
+Apenas um Show | parque
+Steven Universo | cristal
+Gravity Falls | diário
+Phineas e Ferb | invenção
+Kim Possible | missão
+As Meninas Superpoderosas | açúcar
+Looney Tunes | confusão
+Mickey Mouse | luva
+Pernalonga | cenoura
+Dora Aventureira | mapa
+Peppa Pig | lama
+
+Categoria: Personagens
+Darth Vader | respiração
+Homem de Ferro | metal
+Capitão América | escudo
+Hulk | raiva
+Thor | trovão
+Pantera Negra | reino
+Wolverine | garra
+Deadpool | ironia
+Coringa | caos
+Harley Quinn | martelo
+Batman | noite
+Superman | capa
+Mulher-Maravilha | laço
+Elsa | frio
+Simba | savana
+Mufasa | legado
+Sherlock Holmes | dedução
+Hermione | estudo
+Dumbledore | barba
+Gollum | precioso
+Frodo | fardo
+Jack Sparrow | bússola
+Indiana Jones | aventura
+James Bond | terno
+Mario | cogumelo
+
+Categoria: Países
+Brasil | carnaval
+Argentina | tango
+Chile | deserto
+Uruguai | mate
+Paraguai | ponte
+Estados Unidos | cinema
+Canadá | neve
+México | pimenta
+Japão | disciplina
+China | dragão
+Coreia do Sul | dorama
+Índia | tempero
+Egito | areia
+Marrocos | mercado
+África do Sul | safári
+França | perfume
+Itália | massa
+Espanha | praça
+Portugal | azulejo
+Alemanha | precisão
+Inglaterra | chá
+Irlanda | verde
+Grécia | mito
+Turquia | ponte
+Austrália | distância
+
+Categoria: Cidades e lugares
+Salvador | axé
+Rio de Janeiro | morro
+São Paulo | concreto
+Brasília | plano
+Recife | ponte
+Fortaleza | vento
+Belo Horizonte | queijo
+Manaus | floresta
+Lisboa | calçada
+Paris | luz
+Londres | neblina
+Nova York | pressa
+Tóquio | neon
+Roma | pedra
+Barcelona | arte
+Buenos Aires | dança
+Orlando | parque
+Las Vegas | brilho
+Dubai | luxo
+Cairo | deserto
+Atenas | coluna
+Veneza | água
+Amsterdã | bicicleta
+Cancún | praia
+Machu Picchu | altitude
+
+Categoria: Comidas brasileiras
+Feijoada | panela
+Moqueca | dendê
+Acarajé | tabuleiro
+Coxinha | festa
+Pão de queijo | forno
+Brigadeiro | granulado
+Farofa | crocância
+Churrasco | fumaça
+Tapioca | goma
+Cuscuz | floco
+Vatapá | creme
+Caruru | quiabo
+Bobó de camarão | mandioca
+Escondidinho | camada
+Pastel | feira
+Empadão | massa
+Baião de dois | mistura
+Canjica | milho
+Pamonha | palha
+Arroz carreteiro | viagem
+Galinhada | açafrão
+Virado à paulista | prato
+Sarapatel | miúdo
+Buchada | tradição
+Maniçoba | folha
+
+Categoria: Comidas do mundo
+Pizza | forno
+Sushi | alga
+Hambúrguer | pão
+Lasanha | camada
+Taco | tortilla
+Burrito | enrolado
+Paella | arroz
+Ratatouille | legumes
+Croissant | manteiga
+Fondue | queijo
+Kimchi | fermento
+Lámen | caldo
+Curry | especiaria
+Kebab | espeto
+Falafel | grão
+Waffle | quadrado
+Pancake | xarope
+Donut | furo
+Hot dog | estádio
+Fish and chips | jornal
+Guacamole | abacate
+Nhoque | batata
+Risoto | cremoso
+Ceviche | limão
+Hummus | pasta
+
+Categoria: Doces e sobremesas
+Pudim | calda
+Brownie | denso
+Petit gâteau | lava
+Cheesecake | cremoso
+Tiramisu | café
+Sorvete | frio
+Açaí | roxo
+Churros | canela
+Bolo de cenoura | cobertura
+Romeu e Julieta | contraste
+Quindim | gema
+Cocada | coco
+Beijinho | festa
+Palha italiana | quadrado
+Mousse | leveza
+Pavê | piada
+Banoffee | banana
+Macaron | cor
+Alfajor | recheio
+Torta de limão | acidez
+Mil-folhas | crocante
+Gelatina | tremor
+Cupcake | pequeno
+Pipoca doce | cinema
+Bala de coco | infância
+
+Categoria: Bebidas
+Café | energia
+Chá | calma
+Refrigerante | bolha
+Suco | fruta
+Água de coco | praia
+Mate | roda
+Milkshake | canudo
+Chocolate quente | inverno
+Caipirinha | limão
+Cerveja | espuma
+Vinho | taça
+Champanhe | brinde
+Gin tônica | botânico
+Mojito | hortelã
+Energético | alerta
+Smoothie | textura
+Caldo de cana | feira
+Guaraná | Brasil
+Kombucha | fermento
+Limonada | acidez
+Água com gás | bolha
+Cappuccino | espuma
+Latte | leite
+Frappuccino | gelo
+Aperol | laranja
+
+Categoria: Celebridades brasileiras
+Neymar | drible
+Anitta | palco
+Ivete Sangalo | trio
+Caetano Veloso | poesia
+Gilberto Gil | violão
+Gal Costa | voz
+Chico Buarque | letra
+Fernanda Montenegro | teatro
+Selton Mello | câmera
+Lázaro Ramos | presença
+Taís Araújo | elegância
+Juliette | carisma
+Xuxa | nave
+Silvio Santos | auditório
+Faustão | bordão
+Casimiro | react
+Whindersson Nunes | humor
+Paolla Oliveira | samba
+Bruna Marquezine | tela
+Rodrigo Santoro | internacional
+Tony Ramos | novela
+Glória Pires | drama
+Renato Aragão | trapalhão
+Pelé | eterno
+Ayrton Senna | velocidade
+
+Categoria: Celebridades internacionais
+Taylor Swift | pulseira
+Beyoncé | palco
+Rihanna | brilho
+Lady Gaga | transformação
+Adele | voz
+Drake | batida
+The Weeknd | noite
+Michael Jackson | luva
+Madonna | reinvenção
+Britney Spears | pop
+Leonardo DiCaprio | prêmio
+Brad Pitt | cinema
+Tom Cruise | corrida
+Dwayne Johnson | força
+Zendaya | estilo
+Timothée Chalamet | delicadeza
+Will Smith | carisma
+Keanu Reeves | gentileza
+Angelina Jolie | ação
+Meryl Streep | atuação
+Cristiano Ronaldo | salto
+Messi | controle
+Elon Musk | foguete
+Billie Eilish | sussurro
+Harry Styles | moda
+
+Categoria: Animais
+Cachorro | lealdade
+Gato | mistério
+Leão | juba
+Tigre | listras
+Elefante | memória
+Girafa | altura
+Macaco | árvore
+Panda | bambu
+Urso | hibernação
+Lobo | matilha
+Raposa | astúcia
+Cavalo | galope
+Vaca | pasto
+Porco | lama
+Galinha | quintal
+Pato | lago
+Águia | altitude
+Coruja | noite
+Tubarão | barbatana
+Golfinho | salto
+Baleia | canto
+Polvo | tentáculo
+Jacaré | pântano
+Cobra | silêncio
+Camaleão | mudança
+
+Categoria: Objetos de casa
+Geladeira | frio
+Fogão | chama
+Micro-ondas | rapidez
+Sofá | descanso
+Cama | sono
+Travesseiro | maciez
+Espelho | reflexo
+Chuveiro | vapor
+Controle remoto | distância
+Ventilador | vento
+Liquidificador | giro
+Airfryer | crocância
+Panela | cozimento
+Faca | corte
+Garfo | ponta
+Colher | sopa
+Prato | refeição
+Copo | sede
+Vassoura | limpeza
+Relógio | tempo
+Lâmpada | luz
+Carregador | bateria
+Notebook | tela
+Fone de ouvido | som
+Mochila | peso
+
+Categoria: Escola e faculdade
+Prova | tensão
+Seminário | fala
+Slide | apresentação
+Caneta | tinta
+Caderno | anotação
+Mochila | carga
+Biblioteca | silêncio
+Professor | explicação
+Monitoria | ajuda
+Laboratório | prática
+Estetoscópio | ausculta
+Anatomia | peça
+Fisiologia | função
+Bioquímica | via
+Histologia | lâmina
+Patologia | lesão
+Farmacologia | dose
+Plantão | madrugada
+TCC | prazo
+Artigo | método
+Resumo | síntese
+Flashcard | revisão
+Estágio | rotina
+Aula | presença
+Grupo | mensagem
+
+Categoria: Profissões
+Médico | cuidado
+Enfermeiro | vigilância
+Professor | ensino
+Advogado | argumento
+Engenheiro | cálculo
+Arquiteto | forma
+Designer | visual
+Programador | código
+Motorista | rota
+Piloto | altitude
+Cozinheiro | tempero
+Garçom | bandeja
+Dentista | sorriso
+Veterinário | animal
+Psicólogo | escuta
+Jornalista | notícia
+Fotógrafo | lente
+Ator | cena
+Cantor | voz
+Bombeiro | resgate
+Policial | ordem
+Juiz | decisão
+Pedreiro | obra
+Cabeleireiro | corte
+Empreendedor | risco
+
+Categoria: Esportes
+Futebol | bola
+Basquete | cesta
+Vôlei | rede
+Tênis | raquete
+Natação | piscina
+Surfe | onda
+Skate | manobra
+Corrida | ritmo
+Ciclismo | pedal
+Boxe | luva
+MMA | octógono
+Judô | queda
+Karatê | golpe
+Ginástica | precisão
+Fórmula 1 | curva
+Golfe | taco
+Beisebol | bastão
+Rugby | choque
+Handebol | arremesso
+Tênis de mesa | efeito
+Badminton | pena
+Escalada | parede
+Triatlo | resistência
+Hipismo | sela
+Futsal | quadra
+
+Categoria: Futebol
+Flamengo | vermelho
+Corinthians | fiel
+Palmeiras | porco
+São Paulo | tricolor
+Santos | praia
+Vasco | cruz
+Botafogo | estrela
+Fluminense | grená
+Bahia | esquadrão
+Vitória | leão
+Grêmio | sul
+Internacional | colorado
+Cruzeiro | raposa
+Atlético Mineiro | galo
+Athletico Paranaense | furacão
+Real Madrid | branco
+Barcelona | catalão
+Manchester City | azul
+Liverpool | vermelho
+PSG | torre
+Bayern | bávaro
+Juventus | listras
+Milan | rossonero
+Chelsea | londres
+Arsenal | canhão
+
+Categoria: Jogos digitais
+Minecraft | bloco
+Fortnite | construção
+Free Fire | queda
+League of Legends | rota
+Valorant | mira
+Counter-Strike | bomba
+GTA | cidade
+FIFA | gramado
+The Sims | vida
+Among Us | suspeita
+Fall Guys | tropeço
+Roblox | criação
+Mario Kart | casco
+Zelda | exploração
+God of War | ira
+The Last of Us | sobrevivência
+Elden Ring | desafio
+Hogwarts Legacy | magia
+Red Dead Redemption | faroeste
+Call of Duty | missão
+Clash Royale | arena
+Candy Crush | doce
+Subway Surfers | trilho
+Pokémon GO | captura
+Outer Wilds | ciclo
+
+Categoria: Memes e internet
+Nazaré confusa | cálculo
+Doge | cachorro
+Caneta azul | música
+Luísa Sonza chorando | drama
+Inês Brasil | energia
+Bora Bill | repetição
+Luva de Pedreiro | receba
+Choquei | fofoca
+Casimiro reagindo | live
+Barbieheimer | mistura
+NPC | repetição
+Cringe | geração
+Farialimer | colete
+Shitpost | caos
+Flopar | vazio
+Trend | moda
+Hater | crítica
+Fanfic | invenção
+Stalkear | curiosidade
+Print | prova
+Áudio acelerado | pressa
+Figurinha | reação
+Cancelamento | polêmica
+TBT | memória
+Reels | rolagem
+
+Categoria: Apps e redes sociais
+WhatsApp | mensagem
+Instagram | foto
+TikTok | vídeo
+YouTube | play
+X | opinião
+Facebook | lembrança
+Telegram | canal
+Spotify | música
+Netflix | sofá
+Prime Video | catálogo
+Uber | corrida
+iFood | entrega
+Google Maps | rota
+Waze | trânsito
+Duolingo | coruja
+Canva | design
+Notion | página
+ChatGPT | pergunta
+Discord | servidor
+Twitch | live
+Pinterest | inspiração
+LinkedIn | carreira
+Gmail | email
+Google Drive | nuvem
+Vercel | deploy
+
+Categoria: Marcas
+Apple | maçã
+Samsung | tela
+Nike | corrida
+Adidas | listras
+Puma | salto
+Coca-Cola | vermelho
+Pepsi | bolha
+McDonald's | arco
+Burger King | coroa
+Starbucks | sirena
+Netflix | streaming
+Disney | castelo
+Marvel | herói
+DC | sombra
+Lego | peça
+Nubank | roxo
+Itaú | laranja
+Google | busca
+Microsoft | janela
+Amazon | caixa
+Tesla | elétrico
+Uber | rota
+Spotify | áudio
+Rolex | tempo
+Gucci | luxo
+
+Categoria: Coisas de viagem
+Passaporte | fronteira
+Mala | bagagem
+Aeroporto | espera
+Avião | altitude
+Hotel | recepção
+Hostel | beliche
+Mapa | caminho
+Praia | areia
+Montanha | subida
+Museu | silêncio
+Restaurante | reserva
+Câmbio | moeda
+Seguro viagem | proteção
+Guia | explicação
+Roteiro | plano
+Check-in | entrada
+Embarque | portão
+Turbulência | susto
+Janela | vista
+Duty free | compra
+Transfer | chegada
+Carimbo | documento
+Excursão | grupo
+Souvenir | lembrança
+Mochilão | aventura
+
+Categoria: Lugares da cidade
+Shopping | vitrine
+Cinema | pipoca
+Praça | banco
+Parque | grama
+Hospital | cuidado
+Farmácia | remédio
+Padaria | pão
+Mercado | carrinho
+Academia | treino
+Restaurante | mesa
+Bar | copo
+Escola | aula
+Faculdade | campus
+Igreja | sino
+Banco | senha
+Correios | pacote
+Aeroporto | mala
+Rodoviária | ônibus
+Posto de gasolina | bomba
+Salão de beleza | espelho
+Estádio | torcida
+Teatro | palco
+Biblioteca | silêncio
+Delegacia | ocorrência
+Cartório | assinatura
+
+Categoria: Música e artistas
+Samba | roda
+Pagode | pandeiro
+Axé | trio
+Forró | sanfona
+Funk | batida
+Sertanejo | chapéu
+MPB | poesia
+Rock | guitarra
+Pop | refrão
+Rap | rima
+Trap | grave
+Reggae | balanço
+Jazz | improviso
+Blues | lamento
+Clássica | orquestra
+K-pop | coreografia
+Bossa nova | praia
+Eletrônica | pista
+Gospel | louvor
+Indie | alternativo
+Anitta | palco
+Beyoncé | potência
+Taylor Swift | diário
+Drake | fluxo
+Coldplay | luz
+
+Categoria: Situações engraçadas
+Chegar atrasado | desculpa
+Mandar mensagem errada | pânico
+Cair em público | chão
+Esquecer o nome | sorriso
+Rir em momento sério | controle
+Fingir que entendeu | cabeça
+Tropeçar no nada | gravidade
+Dormir na aula | luta
+Perder o ônibus | corrida
+Errar a sala | porta
+Acenar para desconhecido | vergonha
+Celular descarregar | desespero
+Microfone aberto | exposição
+Cantar errado | confiança
+Confundir gêmeos | dúvida
+Responder grupo errado | caos
+Falar sozinho | ensaio
+Chamar professor de mãe | trauma
+Usar roupa do avesso | distração
+Esquecer aniversário | perigo
+Queimar comida | fumaça
+Derrubar bebida | mesa
+Pisar no chiclete | azar
+Travou na apresentação | silêncio
+Rir da própria piada | orgulho
+
+Categoria: Medicina e hospital
+Estetoscópio | escuta
+Jaleco | bolso
+Plantão | madrugada
+Prontuário | registro
+Receita | orientação
+Seringa | aplicação
+Curativo | proteção
+Sutura | fio
+Bisturi | corte
+Luvas | barreira
+Máscara | proteção
+Internato | prática
+Residência | seleção
+Ambulância | sirene
+Emergência | pressa
+Centro cirúrgico | campo
+UTI | monitor
+Radiografia | imagem
+Tomografia | corte
+Ultrassom | som
+Eletrocardiograma | traçado
+Anamnese | história
+Exame físico | inspeção
+Diagnóstico | hipótese
+Alta | saída

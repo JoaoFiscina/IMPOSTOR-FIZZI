@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { Category, GameConfig, GameMode } from '../types';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface SetupScreenProps {
   categories: Category[];
@@ -18,7 +19,10 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
   const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
 
   // Initial list of players
-  const [playerNames, setPlayerNames] = useState<string[]>(['Jogador 1', 'Jogador 2', 'Jogador 3']);
+  const [playerNames, setPlayerNames] = useLocalStorage<string[]>(
+    'impostorFizzi.players',
+    ['Jogador 1', 'Jogador 2', 'Jogador 3']
+  );
   const [impostorsCount, setImpostorsCount] = useState(1);
   const [gameMode, setGameMode] = useState<GameMode>('CLASSIC');
 
@@ -69,6 +73,13 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
     if (playerNames.length <= 3) return;
     const updated = playerNames.filter((_, idx) => idx !== index);
     setPlayerNames(updated);
+  };
+
+  const handleClearSavedPlayers = () => {
+    if (window.confirm('Tem certeza que deseja apagar os jogadores salvos?')) {
+      localStorage.removeItem('impostorFizzi.players');
+      setPlayerNames(['Jogador 1', 'Jogador 2', 'Jogador 3']);
+    }
   };
 
   // IMPOSTORS COUNT ADJUSTMENT
@@ -353,6 +364,28 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
             style={{ marginTop: '14px', padding: '10px 16px', fontSize: '14px', opacity: playerNames.length >= 20 ? 0.5 : 1 }}
           >
             + Adicionar Jogador
+          </button>
+
+          <button
+            type="button"
+            onClick={handleClearSavedPlayers}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-muted)',
+              fontSize: '12px',
+              cursor: 'pointer',
+              marginTop: '12px',
+              textDecoration: 'underline',
+              textAlign: 'center',
+              display: 'block',
+              width: '100%',
+              opacity: 0.7
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.7')}
+          >
+            Limpar jogadores salvos
           </button>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { Category, GameConfig } from '../types';
+import type { Category, GameConfig, GameMode } from '../types';
 
 interface SetupScreenProps {
   categories: Category[];
@@ -15,6 +15,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
   // Initial list of players
   const [playerNames, setPlayerNames] = useState<string[]>(['Jogador 1', 'Jogador 2', 'Jogador 3']);
   const [impostorsCount, setImpostorsCount] = useState(1);
+  const [gameMode, setGameMode] = useState<GameMode>('CLASSIC');
 
   const selectedCategory = categories.find((c) => c.id === selectedCategoryId);
 
@@ -91,6 +92,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
       categoryId: selectedCategoryId,
       players: cleanedNames,
       impostorsCount,
+      gameMode,
     });
   };
 
@@ -121,6 +123,57 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
               <strong style={{ color: 'var(--secondary-cyan)' }}>{selectedCategory.words.length}</strong>
             </div>
           )}
+        </div>
+
+        {/* Game Mode Pick */}
+        <div className="card-glass">
+          <label className="label-title">Modo de Jogo</label>
+          <div style={{ display: 'flex', gap: '10px', marginTop: '8px' }}>
+            <button
+              type="button"
+              className="btn-secondary"
+              style={{
+                flex: 1,
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: '16px 12px',
+                borderColor: gameMode === 'CLASSIC' ? 'var(--secondary-cyan)' : 'var(--surface-border)',
+                background: gameMode === 'CLASSIC' ? 'rgba(0, 229, 255, 0.06)' : 'var(--surface)',
+                color: gameMode === 'CLASSIC' ? 'var(--secondary-cyan)' : 'var(--text-main)',
+                gap: '6px',
+                borderRadius: '16px'
+              }}
+              onClick={() => setGameMode('CLASSIC')}
+            >
+              <span style={{ fontSize: '20px' }}>👤</span>
+              <strong>Clássico</strong>
+            </button>
+            <button
+              type="button"
+              className="btn-secondary"
+              style={{
+                flex: 1,
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: '16px 12px',
+                borderColor: gameMode === 'HINT' ? 'var(--secondary-cyan)' : 'var(--surface-border)',
+                background: gameMode === 'HINT' ? 'rgba(0, 229, 255, 0.06)' : 'var(--surface)',
+                color: gameMode === 'HINT' ? 'var(--secondary-cyan)' : 'var(--text-main)',
+                gap: '6px',
+                borderRadius: '16px'
+              }}
+              onClick={() => setGameMode('HINT')}
+            >
+              <span style={{ fontSize: '20px' }}>💡</span>
+              <strong>Com Dica</strong>
+            </button>
+          </div>
+          <p style={{ color: 'var(--text-muted)', fontSize: '12.5px', marginTop: '12px', lineHeight: '1.45', textAlign: 'center' }}>
+            {gameMode === 'CLASSIC' 
+              ? 'Clássico: O impostor não recebe nenhuma pista.' 
+              : 'Com dica: O impostor recebe uma pista sutil sobre a palavra, sem revelá-la.'
+            }
+          </p>
         </div>
 
         {/* Player Names Setup */}

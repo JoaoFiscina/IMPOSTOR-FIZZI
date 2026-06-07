@@ -13,8 +13,7 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, onBack }) => {
     currentScreen !== 'HOME' && 
     currentScreen !== 'REVEAL_PASS' && 
     currentScreen !== 'REVEAL_SHOW' && 
-    currentScreen !== 'GAMEPLAY' &&
-    currentScreen !== 'RESULTS';
+    currentScreen !== 'GAMEPLAY';
 
   return (
     <header style={{

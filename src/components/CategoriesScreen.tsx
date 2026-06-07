@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Category } from '../types';
+import type { Category, WordObject } from '../types';
 
 interface CategoriesScreenProps {
   categories: Category[];
@@ -18,13 +18,15 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
   // New item inputs
   const [newCategoryName, setNewCategoryName] = useState('');
   const [newWord, setNewWord] = useState('');
+  const [newWordHint, setNewWordHint] = useState('');
 
   // Modals editing states
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   const [editCategoryName, setEditCategoryName] = useState('');
 
-  const [editingWord, setEditingWord] = useState<{ index: number; text: string } | null>(null);
+  const [editingWord, setEditingWord] = useState<{ index: number; text: string; hint: string } | null>(null);
   const [editWordText, setEditWordText] = useState('');
+  const [editWordHint, setEditWordHint] = useState('');
 
   // Selected category object
   const selectedCategory = categories.find((c) => c.id === selectedCategoryId);
@@ -93,33 +95,47 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
 
     const word = newWord.trim();
     // Avoid duplicates
-    if (selectedCategory.words.some((w) => w.toLowerCase() === word.toLowerCase())) {
+    if (selectedCategory.words.some((w) => w.text.toLowerCase() === word.toLowerCase())) {
       alert('Esta palavra já existe nesta categoria!');
       return;
     }
 
+    const hint = newWordHint.trim() || undefined;
+
+    const newWordObj: WordObject = {
+      text: word,
+      hint,
+    };
+
     const updated = categories.map((c) => {
       if (c.id === selectedCategoryId) {
-        return { ...c, words: [...c.words, word] };
+        return { ...c, words: [...c.words, newWordObj] };
       }
       return c;
     });
 
     onUpdateCategories(updated);
     setNewWord('');
+    setNewWordHint('');
   };
 
-  const handleStartEditWord = (index: number, text: string) => {
-    setEditingWord({ index, text });
-    setEditWordText(text);
+  const handleStartEditWord = (index: number, wordObj: WordObject) => {
+    setEditingWord({ index, text: wordObj.text, hint: wordObj.hint || '' });
+    setEditWordText(wordObj.text);
+    setEditWordHint(wordObj.hint || '');
   };
 
   const handleSaveWordEdit = () => {
     if (!selectedCategory || editingWord === null || !editWordText.trim()) return;
 
     const newText = editWordText.trim();
+    const newHint = editWordHint.trim() || undefined;
+    
     const updatedWords = [...selectedCategory.words];
-    updatedWords[editingWord.index] = newText;
+    updatedWords[editingWord.index] = {
+      text: newText,
+      hint: newHint,
+    };
 
     const updated = categories.map((c) => {
       if (c.id === selectedCategoryId) {
@@ -238,33 +254,50 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
               </div>
 
               {/* Add Word Form */}
-              <form onSubmit={handleAddWord} style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
+              <form onSubmit={handleAddWord} style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input
+                    type="text"
+                    className="input-text"
+                    placeholder="Nova palavra..."
+                    value={newWord}
+                    onChange={(e) => setNewWord(e.target.value)}
+                  />
+                  <button className="btn-accent" type="submit" style={{ width: 'auto', padding: '0 20px' }}>
+                    Adicionar
+                  </button>
+                </div>
                 <input
                   type="text"
                   className="input-text"
-                  placeholder="Nova palavra..."
-                  value={newWord}
-                  onChange={(e) => setNewWord(e.target.value)}
+                  placeholder="Dica opcional para o impostor..."
+                  value={newWordHint}
+                  onChange={(e) => setNewWordHint(e.target.value)}
+                  style={{ fontSize: '13px', padding: '10px 14px' }}
                 />
-                <button className="btn-accent" type="submit" style={{ width: 'auto', padding: '0 20px' }}>
-                  Adicionar
-                </button>
               </form>
 
               {/* Words List */}
               <div style={{ flex: 1, overflowY: 'auto' }}>
-                {selectedCategory.words.map((word, idx) => (
+                {selectedCategory.words.map((wordObj, idx) => (
                   <div
                     key={idx}
                     className="list-item"
-                    style={{ cursor: 'default' }}
+                    style={{ cursor: 'default', alignItems: 'flex-start' }}
                   >
-                    <div style={{ color: 'white', fontWeight: '500' }}>{word}</div>
+                    <div style={{ flex: 1, marginRight: '10px' }}>
+                      <div style={{ color: 'white', fontWeight: '500' }}>{wordObj.text}</div>
+                      {wordObj.hint && (
+                        <div style={{ fontSize: '12px', color: 'rgba(0, 229, 255, 0.7)', marginTop: '4px', fontStyle: 'italic' }}>
+                          Dica: {wordObj.hint}
+                        </div>
+                      )}
+                    </div>
                     <div style={{ display: 'flex', gap: '8px' }}>
                       <button
                         className="btn-secondary"
                         style={{ padding: '6px 12px', fontSize: '13px', width: 'auto', borderRadius: '10px' }}
-                        onClick={() => handleStartEditWord(idx, word)}
+                        onClick={() => handleStartEditWord(idx, wordObj)}
                       >
                         Editar
                       </button>
@@ -323,13 +356,26 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
         <div className="modal-overlay">
           <div className="modal-content">
             <h3 className="modal-title">Editar Palavra</h3>
-            <div style={{ marginBottom: '20px' }}>
-              <input
-                type="text"
-                className="input-text"
-                value={editWordText}
-                onChange={(e) => setEditWordText(e.target.value)}
-              />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '20px' }}>
+              <div>
+                <label className="label-title">Palavra</label>
+                <input
+                  type="text"
+                  className="input-text"
+                  value={editWordText}
+                  onChange={(e) => setEditWordText(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="label-title">Dica (Opcional)</label>
+                <input
+                  type="text"
+                  className="input-text"
+                  value={editWordHint}
+                  placeholder="Nenhuma dica cadastrada"
+                  onChange={(e) => setEditWordHint(e.target.value)}
+                />
+              </div>
             </div>
             <div className="modal-actions">
               <button className="btn-secondary" onClick={() => setEditingWord(null)}>

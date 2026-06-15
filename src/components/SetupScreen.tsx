@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { Category, GameConfig, GameMode, ActiveSession } from '../types';
+import type { Category, GameConfig, GameMode, ActiveSession, CategorySelectionMode } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { isMedicalCategory } from '../types';
 
@@ -16,7 +16,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
   activeSession,
   nonMedicinerMode
 }) => {
-  const [selectionMode, setSelectionMode] = useState<'SINGLE' | 'MULTI'>(() => {
+  const [selectionMode, setSelectionMode] = useState<CategorySelectionMode>(() => {
     return activeSession ? activeSession.selectionMode : 'SINGLE';
   });
 
@@ -77,9 +77,12 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
 
   const totalWords = selectionMode === 'SINGLE' 
     ? (selectedCategory?.words.length || 0)
-    : displayedCategories
-        .filter(c => selectedCategoryIds.includes(c.id))
-        .reduce((sum, c) => sum + c.words.length, 0);
+    : selectionMode === 'MULTI'
+      ? displayedCategories
+          .filter(c => selectedCategoryIds.includes(c.id))
+          .reduce((sum, c) => sum + c.words.length, 0)
+      : displayedCategories
+          .reduce((sum, c) => sum + c.words.length, 0);
 
   // Sync impostors count if players list shrinks
   useEffect(() => {
@@ -138,7 +141,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
         return;
       }
       finalCategoryIds = [selectedCategoryId];
-    } else {
+    } else if (selectionMode === 'MULTI') {
       if (selectedCategoryIds.length === 0) {
         alert('Por favor, selecione pelo menos uma categoria.');
         return;
@@ -149,6 +152,13 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
         return;
       }
       finalCategoryIds = selectedCategoryIds;
+    } else {
+      const nonEmptyAvailable = displayedCategories.filter(c => c.words && c.words.length > 0);
+      if (nonEmptyAvailable.length === 0) {
+        alert('Nenhuma categoria disponível para sorteio. Desative o modo Não mediciner ou adicione categorias não médicas.');
+        return;
+      }
+      finalCategoryIds = nonEmptyAvailable.map(c => c.id);
     }
 
     // Clean names and validate
@@ -210,9 +220,17 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
             >
               Múltiplas ({selectedCategoryIds.length})
             </button>
+            <button
+              type="button"
+              className={`tab-btn ${selectionMode === 'RANDOM' ? 'active' : ''}`}
+              style={{ padding: '8px 12px', fontSize: '13px' }}
+              onClick={() => setSelectionMode('RANDOM')}
+            >
+              Categoria Aleatória
+            </button>
           </div>
 
-          {selectionMode === 'SINGLE' ? (
+          {selectionMode === 'SINGLE' && (
             <div>
               <select
                 className="input-text"
@@ -228,7 +246,9 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
                 ))}
               </select>
             </div>
-          ) : (
+          )}
+
+          {selectionMode === 'MULTI' && (
             <div>
               {/* Quick action buttons */}
               <div style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
@@ -295,6 +315,28 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
                   );
                 })}
               </div>
+            </div>
+          )}
+
+          {selectionMode === 'RANDOM' && (
+            <div style={{
+              padding: '16px',
+              borderRadius: '16px',
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid rgba(255, 255, 255, 0.05)',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px'
+            }}>
+              <p style={{ fontSize: '13.5px', color: 'var(--text-main)', margin: 0, fontWeight: '500' }}>
+                🎲 Uma categoria será sorteada automaticamente no início da rodada.
+              </p>
+              {nonMedicinerMode && (
+                <p style={{ fontSize: '12px', color: '#ff4d4d', margin: 0, fontWeight: '600' }}>
+                  🚫 Modo Não mediciner ativo: categorias médicas não entram no sorteio.
+                </p>
+              )}
             </div>
           )}
 

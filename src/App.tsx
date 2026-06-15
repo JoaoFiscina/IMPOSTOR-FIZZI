@@ -218,55 +218,94 @@ function App() {
 
   // GAME LAUNCH & WORD SELECTION ENGINE
   const handleStartRound = (config: GameConfig, isNewSession = true) => {
-    let finalCategoryIds = config.categoryIds;
-    if (nonMedicinerMode) {
-      finalCategoryIds = config.categoryIds.filter((id) => {
-        const cat = categories.find((c) => c.id === id);
-        return cat ? !isMedicalCategory(cat) : false;
-      });
-    }
-
-    const selectedCategories = categories.filter((c) => finalCategoryIds.includes(c.id));
-    if (selectedCategories.length === 0) {
-      alert('Erro: Nenhuma categoria selecionada.');
-      return;
-    }
-
-    const twoHoursAgo = Date.now() - 2 * 60 * 60 * 1000;
-
-    // Collect all candidate words that are not in cooldown in their specific category
-    const availableCandidates: { category: Category; wordObj: WordObject }[] = [];
-
-    selectedCategories.forEach((category) => {
-      const categoryCooldowns = history[category.name] || [];
-      category.words.forEach((wordObj) => {
-        const cooldownItem = categoryCooldowns.find(
-          (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
-        );
-        const isAvailable = !cooldownItem || cooldownItem.timestamp < twoHoursAgo;
-        if (isAvailable) {
-          availableCandidates.push({ category, wordObj });
-        }
-      });
-    });
-
     let chosenCategory: Category;
     let selectedWordObj: WordObject = { text: '' };
+    let finalCategoryIds = config.categoryIds;
 
-    if (availableCandidates.length > 0) {
-      // Pick random from available candidates using robust getRandomFloat
-      const randIdx = Math.floor(getRandomFloat() * availableCandidates.length);
-      const chosen = availableCandidates[randIdx];
-      chosenCategory = chosen.category;
-      selectedWordObj = chosen.wordObj;
+    if (config.selectionMode === 'RANDOM') {
+      let availableCategories = categories;
+      if (nonMedicinerMode) {
+        availableCategories = availableCategories.filter((c) => !isMedicalCategory(c));
+      }
+      availableCategories = availableCategories.filter((c) => c.words && c.words.length > 0);
+
+      if (availableCategories.length === 0) {
+        alert('Nenhuma categoria disponível para sorteio. Desative o modo Não mediciner ou adicione categorias não médicas.');
+        return;
+      }
+
+      const twoHoursAgo = Date.now() - 2 * 60 * 60 * 1000;
+      const categoriesWithAvailableWords = availableCategories.filter((category) => {
+        const categoryCooldowns = history[category.name] || [];
+        return category.words.some((wordObj) => {
+          const cooldownItem = categoryCooldowns.find(
+            (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
+          );
+          return !cooldownItem || cooldownItem.timestamp < twoHoursAgo;
+        });
+      });
+
+      if (categoriesWithAvailableWords.length > 0) {
+        const randCatIdx = Math.floor(getRandomFloat() * categoriesWithAvailableWords.length);
+        chosenCategory = categoriesWithAvailableWords[randCatIdx];
+
+        const categoryCooldowns = history[chosenCategory.name] || [];
+        const candidates = chosenCategory.words.filter((wordObj) => {
+          const cooldownItem = categoryCooldowns.find(
+            (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
+          );
+          return !cooldownItem || cooldownItem.timestamp < twoHoursAgo;
+        });
+        const randWordIdx = Math.floor(getRandomFloat() * candidates.length);
+        selectedWordObj = candidates[randWordIdx];
+      } else {
+        alert(
+          'Todas as palavras das categorias disponíveis foram jogadas nas últimas 2 horas. A palavra menos recente foi repetida para esta rodada.'
+        );
+        let oldestTimestamp = Infinity;
+        let oldestCandidate: { category: Category; wordObj: WordObject } | null = null;
+
+        availableCategories.forEach((category) => {
+          const categoryCooldowns = history[category.name] || [];
+          category.words.forEach((wordObj) => {
+            const cooldownItem = categoryCooldowns.find(
+              (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
+            );
+            const timestamp = cooldownItem ? cooldownItem.timestamp : 0;
+            if (timestamp < oldestTimestamp) {
+              oldestTimestamp = timestamp;
+              oldestCandidate = { category, wordObj };
+            }
+          });
+        });
+
+        if (oldestCandidate) {
+          chosenCategory = (oldestCandidate as any).category;
+          selectedWordObj = (oldestCandidate as any).wordObj;
+        } else {
+          const randCatIdx = Math.floor(getRandomFloat() * availableCategories.length);
+          chosenCategory = availableCategories[randCatIdx];
+          const randWordIdx = Math.floor(getRandomFloat() * chosenCategory.words.length);
+          selectedWordObj = chosenCategory.words[randWordIdx];
+        }
+      }
+      finalCategoryIds = [chosenCategory.id];
     } else {
-      // All words are in cooldown! Show warning and pick the least recently used across all selected categories
-      alert(
-        'Todas as palavras das categorias selecionadas foram jogadas nas últimas 2 horas. A palavra menos recente foi repetida para esta rodada.'
-      );
+      if (nonMedicinerMode) {
+        finalCategoryIds = config.categoryIds.filter((id) => {
+          const cat = categories.find((c) => c.id === id);
+          return cat ? !isMedicalCategory(cat) : false;
+        });
+      }
 
-      let oldestTimestamp = Infinity;
-      let oldestCandidate: { category: Category; wordObj: WordObject } | null = null;
+      const selectedCategories = categories.filter((c) => finalCategoryIds.includes(c.id));
+      if (selectedCategories.length === 0) {
+        alert('Erro: Nenhuma categoria selecionada.');
+        return;
+      }
+
+      const twoHoursAgo = Date.now() - 2 * 60 * 60 * 1000;
+      const availableCandidates: { category: Category; wordObj: WordObject }[] = [];
 
       selectedCategories.forEach((category) => {
         const categoryCooldowns = history[category.name] || [];
@@ -274,23 +313,49 @@ function App() {
           const cooldownItem = categoryCooldowns.find(
             (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
           );
-          const timestamp = cooldownItem ? cooldownItem.timestamp : 0;
-          if (timestamp < oldestTimestamp) {
-            oldestTimestamp = timestamp;
-            oldestCandidate = { category, wordObj };
+          const isAvailable = !cooldownItem || cooldownItem.timestamp < twoHoursAgo;
+          if (isAvailable) {
+            availableCandidates.push({ category, wordObj });
           }
         });
       });
 
-      if (oldestCandidate) {
-        chosenCategory = (oldestCandidate as any).category;
-        selectedWordObj = (oldestCandidate as any).wordObj;
+      if (availableCandidates.length > 0) {
+        const randIdx = Math.floor(getRandomFloat() * availableCandidates.length);
+        const chosen = availableCandidates[randIdx];
+        chosenCategory = chosen.category;
+        selectedWordObj = chosen.wordObj;
       } else {
-        // Fallback safety
-        const randCatIdx = Math.floor(getRandomFloat() * selectedCategories.length);
-        chosenCategory = selectedCategories[randCatIdx];
-        const randWordIdx = Math.floor(getRandomFloat() * chosenCategory.words.length);
-        selectedWordObj = chosenCategory.words[randWordIdx];
+        alert(
+          'Todas as palavras das categorias selecionadas foram jogadas nas últimas 2 horas. A palavra menos recente foi repetida para esta rodada.'
+        );
+
+        let oldestTimestamp = Infinity;
+        let oldestCandidate: { category: Category; wordObj: WordObject } | null = null;
+
+        selectedCategories.forEach((category) => {
+          const categoryCooldowns = history[category.name] || [];
+          category.words.forEach((wordObj) => {
+            const cooldownItem = categoryCooldowns.find(
+              (item) => item.word.toLowerCase() === wordObj.text.toLowerCase()
+            );
+            const timestamp = cooldownItem ? cooldownItem.timestamp : 0;
+            if (timestamp < oldestTimestamp) {
+              oldestTimestamp = timestamp;
+              oldestCandidate = { category, wordObj };
+            }
+          });
+        });
+
+        if (oldestCandidate) {
+          chosenCategory = (oldestCandidate as any).category;
+          selectedWordObj = (oldestCandidate as any).wordObj;
+        } else {
+          const randCatIdx = Math.floor(getRandomFloat() * selectedCategories.length);
+          chosenCategory = selectedCategories[randCatIdx];
+          const randWordIdx = Math.floor(getRandomFloat() * chosenCategory.words.length);
+          selectedWordObj = chosenCategory.words[randWordIdx];
+        }
       }
     }
 
@@ -316,6 +381,7 @@ function App() {
       currentSession = {
         config,
         selectionMode: config.selectionMode || 'SINGLE',
+        categorySelectionMode: config.categorySelectionMode || (config.selectionMode === 'MULTI' ? 'multiple' : config.selectionMode === 'RANDOM' ? 'random' : 'single'),
         previousImpostors: [],
         previousStarters: [],
         roundsPlayed: 0
@@ -333,8 +399,11 @@ function App() {
       ...currentSession,
       config: {
         ...config,
-        categoryIds: finalCategoryIds
+        categoryIds: config.selectionMode === 'RANDOM' ? [] : finalCategoryIds,
+        categorySelectionMode: config.categorySelectionMode || (config.selectionMode === 'MULTI' ? 'multiple' : config.selectionMode === 'RANDOM' ? 'random' : 'single')
       },
+      selectionMode: config.selectionMode || currentSession.selectionMode,
+      categorySelectionMode: config.categorySelectionMode || (config.selectionMode === 'MULTI' ? 'multiple' : config.selectionMode === 'RANDOM' ? 'random' : 'single'),
       previousImpostors: [...currentSession.previousImpostors, ...impostorNames],
       previousStarters: [...currentSession.previousStarters, starterName],
       roundsPlayed: currentSession.roundsPlayed + 1

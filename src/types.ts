@@ -38,17 +38,21 @@ export interface CooldownHistory {
 
 export type GameMode = 'CLASSIC' | 'HINT';
 
+export type CategorySelectionMode = 'SINGLE' | 'MULTI' | 'RANDOM';
+
 export interface GameConfig {
   categoryIds: string[];
   players: string[];
   impostorsCount: number;
   gameMode: GameMode;
-  selectionMode?: 'SINGLE' | 'MULTI';
+  selectionMode?: CategorySelectionMode;
+  categorySelectionMode?: 'single' | 'multiple' | 'random';
 }
 
 export interface ActiveSession {
   config: GameConfig;
-  selectionMode: 'SINGLE' | 'MULTI';
+  selectionMode: CategorySelectionMode;
+  categorySelectionMode?: 'single' | 'multiple' | 'random';
   previousImpostors: string[]; // names of previous impostors
   previousStarters: string[];  // names of previous starters
   roundsPlayed: number;

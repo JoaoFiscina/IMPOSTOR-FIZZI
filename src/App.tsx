@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { INITIAL_CATEGORIES } from './initialData';
-import type { Category, Player, GameScreen, CooldownHistory, GameConfig, GameMode, WordObject } from './types';
+import type { Category, Player, GameScreen, CooldownHistory, GameConfig, GameMode, WordObject, ActiveSession } from './types';
+import { isMedicalCategory } from './types';
 
 // Component Screens
 import { Header } from './components/Header';
@@ -26,6 +27,7 @@ interface RoundState {
 const normalizeCategories = (cats: any[]): Category[] => {
   return cats.map((cat) => ({
     ...cat,
+    isMedical: cat.isMedical !== undefined ? cat.isMedical : isMedicalCategory(cat),
     words: (cat.words || []).map((w: any) => {
       if (typeof w === 'string') {
         return { text: w };
@@ -38,15 +40,171 @@ const normalizeCategories = (cats: any[]): Category[] => {
   }));
 };
 
+// Robust random generator using crypto.getRandomValues with Math.random fallback
+const getRandomFloat = (): number => {
+  if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0] / 0xffffffff;
+  }
+  return Math.random();
+};
+
+// Weighted recency calculation for impostors
+const getImpostorWeight = (playerName: string, previousImpostors: string[]) => {
+  if (previousImpostors.length === 0) return 1.0;
+  
+  const lastIndex = previousImpostors.lastIndexOf(playerName);
+  if (lastIndex === -1) return 1.0;
+  
+  const distance = previousImpostors.length - 1 - lastIndex;
+  
+  if (distance === 0) return 0.1;
+  if (distance === 1) return 0.3;
+  if (distance === 2) return 0.6;
+  return 1.0;
+};
+
+// Weighted recency calculation for starters
+const getStarterWeight = (playerName: string, previousStarters: string[]) => {
+  if (previousStarters.length === 0) return 1.0;
+  
+  const lastIndex = previousStarters.lastIndexOf(playerName);
+  if (lastIndex === -1) return 1.0;
+  
+  const distance = previousStarters.length - 1 - lastIndex;
+  
+  if (distance === 0) return 0.1;
+  if (distance === 1) return 0.3;
+  if (distance === 2) return 0.6;
+  return 1.0;
+};
+
+// Weighted selection without replacement for impostors
+const selectImpostors = (players: string[], count: number, previousImpostors: string[]): string[] => {
+  const candidates = players.map(name => ({
+    name,
+    weight: getImpostorWeight(name, previousImpostors)
+  }));
+  
+  const selected: string[] = [];
+  
+  for (let i = 0; i < count; i++) {
+    if (candidates.length === 0) break;
+    
+    const totalWeight = candidates.reduce((sum, c) => sum + c.weight, 0);
+    if (totalWeight === 0) {
+      const randIdx = Math.floor(getRandomFloat() * candidates.length);
+      selected.push(candidates[randIdx].name);
+      candidates.splice(randIdx, 1);
+      continue;
+    }
+    
+    const r = getRandomFloat() * totalWeight;
+    let accum = 0;
+    let selectedIdx = 0;
+    
+    for (let j = 0; j < candidates.length; j++) {
+      accum += candidates[j].weight;
+      if (accum >= r) {
+        selectedIdx = j;
+        break;
+      }
+    }
+    
+    selected.push(candidates[selectedIdx].name);
+    candidates.splice(selectedIdx, 1);
+  }
+  
+  return selected;
+};
+
+// Weighted selection for starter
+const selectStarter = (players: string[], previousStarters: string[]): string => {
+  if (players.length === 0) return '';
+  
+  const candidates = players.map(name => ({
+    name,
+    weight: getStarterWeight(name, previousStarters)
+  }));
+  
+  const totalWeight = candidates.reduce((sum, c) => sum + c.weight, 0);
+  if (totalWeight === 0) {
+    const randIdx = Math.floor(getRandomFloat() * players.length);
+    return players[randIdx];
+  }
+  
+  const r = getRandomFloat() * totalWeight;
+  let accum = 0;
+  for (let i = 0; i < candidates.length; i++) {
+    accum += candidates[i].weight;
+    if (accum >= r) {
+      return candidates[i].name;
+    }
+  }
+  
+  return candidates[0].name;
+};
+
 function App() {
   const [screen, setScreen] = useState<GameScreen>('HOME');
   
   // Local storage persisted state
   const [rawCategories, setCategories] = useLocalStorage<Category[]>('impostor_fizzi_categories', INITIAL_CATEGORIES);
   const [history, setHistory] = useLocalStorage<CooldownHistory>('impostor_fizzi_cooldowns', {});
+  const [activeSession, setActiveSession] = useLocalStorage<ActiveSession | null>('impostorFizzi.activeSession', null);
+  const [nonMedicinerMode, setNonMedicinerMode] = useLocalStorage<boolean>('impostorFizzi.nonMedicinerMode', false);
   
   // Normalize loaded categories
   const categories = normalizeCategories(rawCategories);
+
+  // Toggle mode with session check
+  const handleToggleNonMediciner = () => {
+    const newMode = !nonMedicinerMode;
+    
+    if (newMode && activeSession) {
+      const sessionCategories = categories.filter((c) => activeSession.config.categoryIds.includes(c.id));
+      const hasMedical = sessionCategories.some(isMedicalCategory);
+      
+      if (hasMedical) {
+        const confirmDeactivate = window.confirm(
+          "O modo Não mediciner remove categorias médicas da seleção. Deseja continuar?"
+        );
+        if (!confirmDeactivate) {
+          return;
+        }
+        
+        const nonMedicalIds = activeSession.config.categoryIds.filter((id) => {
+          const cat = categories.find((c) => c.id === id);
+          return cat ? !isMedicalCategory(cat) : false;
+        });
+        
+        if (nonMedicalIds.length === 0) {
+          alert("A sessão atual ficou sem nenhuma categoria. Por favor, escolha novas categorias.");
+          setActiveSession({
+            ...activeSession,
+            config: {
+              ...activeSession.config,
+              categoryIds: []
+            }
+          });
+          setNonMedicinerMode(true);
+          setScreen('SETUP');
+          return;
+        } else {
+          setActiveSession({
+            ...activeSession,
+            config: {
+              ...activeSession.config,
+              categoryIds: nonMedicalIds
+            }
+          });
+        }
+      }
+    }
+    
+    setNonMedicinerMode(newMode);
+  };
 
   // Game running state
   const [roundState, setRoundState] = useState<RoundState | null>(null);
@@ -59,8 +217,16 @@ function App() {
   };
 
   // GAME LAUNCH & WORD SELECTION ENGINE
-  const handleStartRound = (config: GameConfig) => {
-    const selectedCategories = categories.filter((c) => config.categoryIds.includes(c.id));
+  const handleStartRound = (config: GameConfig, isNewSession = true) => {
+    let finalCategoryIds = config.categoryIds;
+    if (nonMedicinerMode) {
+      finalCategoryIds = config.categoryIds.filter((id) => {
+        const cat = categories.find((c) => c.id === id);
+        return cat ? !isMedicalCategory(cat) : false;
+      });
+    }
+
+    const selectedCategories = categories.filter((c) => finalCategoryIds.includes(c.id));
     if (selectedCategories.length === 0) {
       alert('Erro: Nenhuma categoria selecionada.');
       return;
@@ -88,8 +254,8 @@ function App() {
     let selectedWordObj: WordObject = { text: '' };
 
     if (availableCandidates.length > 0) {
-      // Pick random from available candidates
-      const randIdx = Math.floor(Math.random() * availableCandidates.length);
+      // Pick random from available candidates using robust getRandomFloat
+      const randIdx = Math.floor(getRandomFloat() * availableCandidates.length);
       const chosen = availableCandidates[randIdx];
       chosenCategory = chosen.category;
       selectedWordObj = chosen.wordObj;
@@ -121,9 +287,9 @@ function App() {
         selectedWordObj = (oldestCandidate as any).wordObj;
       } else {
         // Fallback safety
-        const randCatIdx = Math.floor(Math.random() * selectedCategories.length);
+        const randCatIdx = Math.floor(getRandomFloat() * selectedCategories.length);
         chosenCategory = selectedCategories[randCatIdx];
-        const randWordIdx = Math.floor(Math.random() * chosenCategory.words.length);
+        const randWordIdx = Math.floor(getRandomFloat() * chosenCategory.words.length);
         selectedWordObj = chosenCategory.words[randWordIdx];
       }
     }
@@ -144,28 +310,44 @@ function App() {
       [categoryName]: updatedCategoryCooldowns,
     });
 
-    // Populate players list
+    // Resolve active session
+    let currentSession = activeSession;
+    if (isNewSession || !currentSession) {
+      currentSession = {
+        config,
+        selectionMode: config.selectionMode || 'SINGLE',
+        previousImpostors: [],
+        previousStarters: [],
+        roundsPlayed: 0
+      };
+    }
+
+    // Select impostors using weighted randomization
+    const impostorNames = selectImpostors(config.players, config.impostorsCount, currentSession.previousImpostors);
+
+    // Select starter using weighted randomization
+    const starterName = selectStarter(config.players, currentSession.previousStarters);
+
+    // Update and persist session history
+    const updatedSession: ActiveSession = {
+      ...currentSession,
+      config: {
+        ...config,
+        categoryIds: finalCategoryIds
+      },
+      previousImpostors: [...currentSession.previousImpostors, ...impostorNames],
+      previousStarters: [...currentSession.previousStarters, starterName],
+      roundsPlayed: currentSession.roundsPlayed + 1
+    };
+
+    setActiveSession(updatedSession);
+
+    // Populate players list with isImpostor flag
     const preparedPlayers: Player[] = config.players.map((name) => ({
       id: Math.random().toString(36).substring(2, 11),
       name,
-      isImpostor: false,
+      isImpostor: impostorNames.includes(name),
     }));
-
-    // Choose impostors indices
-    const impostorIndices = new Set<number>();
-    while (impostorIndices.size < config.impostorsCount) {
-      const randIdx = Math.floor(Math.random() * preparedPlayers.length);
-      impostorIndices.add(randIdx);
-    }
-
-    // Assign impostors
-    impostorIndices.forEach((idx) => {
-      preparedPlayers[idx].isImpostor = true;
-    });
-
-    // Pick a random starter player
-    const randStartIdx = Math.floor(Math.random() * preparedPlayers.length);
-    const starterName = preparedPlayers[randStartIdx].name;
 
     // Load Round State
     setRoundState({
@@ -179,6 +361,24 @@ function App() {
 
     // Transition to turn-based reveal
     setScreen('REVEAL_PASS');
+  };
+
+  const handleNewRoundWithSession = () => {
+    if (activeSession) {
+      handleStartRound(activeSession.config, false);
+    }
+  };
+
+  const handleExitSession = () => {
+    setActiveSession(null);
+    setRoundState(null);
+    setScreen('HOME');
+  };
+
+  const handleContinueSession = () => {
+    if (activeSession) {
+      handleStartRound(activeSession.config, false);
+    }
   };
 
   const handleFinishReveal = () => {
@@ -195,13 +395,21 @@ function App() {
       <Header currentScreen={screen} onBack={handleBack} />
 
       {screen === 'HOME' && (
-        <HomeScreen onNavigate={setScreen} />
+        <HomeScreen 
+          onNavigate={setScreen} 
+          activeSession={activeSession}
+          onContinueSession={handleContinueSession}
+          onExitSession={handleExitSession}
+          nonMedicinerMode={nonMedicinerMode}
+          onToggleNonMediciner={handleToggleNonMediciner}
+        />
       )}
 
       {screen === 'CATEGORIES' && (
         <CategoriesScreen
           categories={categories}
           onUpdateCategories={setCategories}
+          nonMedicinerMode={nonMedicinerMode}
         />
       )}
 
@@ -216,7 +424,9 @@ function App() {
       {screen === 'SETUP' && (
         <SetupScreen
           categories={categories}
-          onStartRound={handleStartRound}
+          onStartRound={(cfg) => handleStartRound(cfg, true)}
+          activeSession={activeSession}
+          nonMedicinerMode={nonMedicinerMode}
         />
       )}
 
@@ -246,6 +456,8 @@ function App() {
           secretWord={roundState.secretWord}
           starterName={roundState.starterName}
           onRestartGame={handleRestartGame}
+          onNewRoundWithSession={handleNewRoundWithSession}
+          onExitSession={handleExitSession}
         />
       )}
     </>

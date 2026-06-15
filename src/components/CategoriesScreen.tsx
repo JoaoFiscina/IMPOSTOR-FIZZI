@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import type { Category, WordObject } from '../types';
+import { isMedicalCategory } from '../types';
 
 interface CategoriesScreenProps {
   categories: Category[];
   onUpdateCategories: (newCategories: Category[]) => void;
+  nonMedicinerMode: boolean;
 }
 
 export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
   categories,
   onUpdateCategories,
+  nonMedicinerMode,
 }) => {
   const [activeTab, setActiveTab] = useState<'categories' | 'words'>('categories');
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>(
@@ -211,8 +214,24 @@ export const CategoriesScreen: React.FC<CategoriesScreenProps> = ({
                 }}
               >
                 <div>
-                  <div style={{ fontWeight: '600', color: 'white' }}>{cat.name}</div>
-                  <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                    <div style={{ fontWeight: '600', color: 'white' }}>{cat.name}</div>
+                    {nonMedicinerMode && isMedicalCategory(cat) && (
+                      <span style={{ 
+                        fontSize: '10px', 
+                        color: '#ff4d4d', 
+                        background: 'rgba(255, 77, 77, 0.1)', 
+                        padding: '2px 8px', 
+                        borderRadius: '12px',
+                        border: '1px solid rgba(255, 77, 77, 0.25)',
+                        fontWeight: '500',
+                        lineHeight: '1.2'
+                      }}>
+                        oculta no modo Não mediciner
+                      </span>
+                    )}
+                  </div>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>
                     {cat.words.length} palavras
                   </div>
                 </div>

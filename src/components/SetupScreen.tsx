@@ -1,32 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import type { Category, GameConfig, GameMode } from '../types';
+import type { Category, GameConfig, GameMode, ActiveSession } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { isMedicalCategory } from '../types';
 
 interface SetupScreenProps {
   categories: Category[];
   onStartRound: (config: GameConfig) => void;
+  activeSession?: ActiveSession | null;
+  nonMedicinerMode: boolean;
 }
 
-export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRound }) => {
-  const [selectionMode, setSelectionMode] = useState<'SINGLE' | 'MULTI'>('SINGLE');
+export const SetupScreen: React.FC<SetupScreenProps> = ({ 
+  categories, 
+  onStartRound, 
+  activeSession,
+  nonMedicinerMode
+}) => {
+  const [selectionMode, setSelectionMode] = useState<'SINGLE' | 'MULTI'>(() => {
+    return activeSession ? activeSession.selectionMode : 'SINGLE';
+  });
+
+  const displayedCategories = nonMedicinerMode 
+    ? categories.filter(c => !isMedicalCategory(c))
+    : categories;
 
   // Select first category as default if available
-  const [selectedCategoryId, setSelectedCategoryId] = useState(
-    categories.length > 0 ? categories[0].id : ''
-  );
+  const [selectedCategoryId, setSelectedCategoryId] = useState(() => {
+    if (activeSession && activeSession.selectionMode === 'SINGLE' && activeSession.config.categoryIds.length > 0) {
+      const activeId = activeSession.config.categoryIds[0];
+      if (displayedCategories.some(c => c.id === activeId)) {
+        return activeId;
+      }
+    }
+    return displayedCategories.length > 0 ? displayedCategories[0].id : '';
+  });
   
   // Selected categories for multi-select
-  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>([]);
+  const [selectedCategoryIds, setSelectedCategoryIds] = useState<string[]>(() => {
+    if (activeSession && activeSession.selectionMode === 'MULTI') {
+      return activeSession.config.categoryIds.filter(id => 
+        displayedCategories.some(c => c.id === id)
+      );
+    }
+    return [];
+  });
 
   // Initial list of players
   const [playerNames, setPlayerNames] = useLocalStorage<string[]>(
     'impostorFizzi.players',
     ['Jogador 1', 'Jogador 2', 'Jogador 3']
   );
-  const [impostorsCount, setImpostorsCount] = useState(1);
-  const [gameMode, setGameMode] = useState<GameMode>('CLASSIC');
+  const [impostorsCount, setImpostorsCount] = useState(() => {
+    return activeSession ? activeSession.config.impostorsCount : 1;
+  });
+  const [gameMode, setGameMode] = useState<GameMode>(() => {
+    return activeSession ? activeSession.config.gameMode : 'CLASSIC';
+  });
 
-  const selectedCategory = categories.find((c) => c.id === selectedCategoryId);
+  const selectedCategory = displayedCategories.find((c) => c.id === selectedCategoryId);
 
   const handleToggleCategory = (catId: string) => {
     if (selectedCategoryIds.includes(catId)) {
@@ -37,7 +68,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
   };
 
   const handleSelectAll = () => {
-    setSelectedCategoryIds(categories.map(c => c.id));
+    setSelectedCategoryIds(displayedCategories.map(c => c.id));
   };
 
   const handleClearSelection = () => {
@@ -46,7 +77,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
 
   const totalWords = selectionMode === 'SINGLE' 
     ? (selectedCategory?.words.length || 0)
-    : categories
+    : displayedCategories
         .filter(c => selectedCategoryIds.includes(c.id))
         .reduce((sum, c) => sum + c.words.length, 0);
 
@@ -101,7 +132,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
         alert('Por favor, selecione uma categoria.');
         return;
       }
-      const cat = categories.find((c) => c.id === selectedCategoryId);
+      const cat = displayedCategories.find((c) => c.id === selectedCategoryId);
       if (!cat || cat.words.length === 0) {
         alert('A categoria selecionada não possui palavras! Por favor, escolha outra.');
         return;
@@ -112,7 +143,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
         alert('Por favor, selecione pelo menos uma categoria.');
         return;
       }
-      const nonEmptySelected = categories.filter(c => selectedCategoryIds.includes(c.id) && c.words.length > 0);
+      const nonEmptySelected = displayedCategories.filter(c => selectedCategoryIds.includes(c.id) && c.words.length > 0);
       if (nonEmptySelected.length === 0) {
         alert('Nenhuma das categorias selecionadas possui palavras! Adicione palavras a elas primeiro.');
         return;
@@ -147,6 +178,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
       players: cleanedNames,
       impostorsCount,
       gameMode,
+      selectionMode,
     });
   };
 
@@ -189,7 +221,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
                 onChange={(e) => setSelectedCategoryId(e.target.value)}
               >
                 <option value="" disabled style={{ backgroundColor: '#12141c', color: 'white' }}>Selecione uma categoria</option>
-                {categories.map((c) => (
+                {displayedCategories.map((c) => (
                   <option key={c.id} value={c.id} style={{ backgroundColor: '#12141c', color: 'white' }}>
                     {c.name}
                   </option>
@@ -227,7 +259,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({ categories, onStartRou
                 flexDirection: 'column',
                 gap: '8px'
               }}>
-                {categories.map((c) => {
+                {displayedCategories.map((c) => {
                   const isChecked = selectedCategoryIds.includes(c.id);
                   return (
                     <div

@@ -1634,6 +1634,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "anatomia",
     "name": "Anatomia",
+    "isMedical": true,
     "words": [
       {
         "text": "Hipocampo",
@@ -1700,6 +1701,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "doencas-classicas",
     "name": "Doenças clássicas",
+    "isMedical": true,
     "words": [
       {
         "text": "Tuberculose",
@@ -1766,6 +1768,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "emergencias-medicas",
     "name": "Emergências médicas",
+    "isMedical": true,
     "words": [
       {
         "text": "Parada cardiorrespiratória",
@@ -1832,6 +1835,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "cirurgia",
     "name": "Cirurgia",
+    "isMedical": true,
     "words": [
       {
         "text": "Apendicectomia",
@@ -1898,6 +1902,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "exames-e-diagnosticos",
     "name": "Exames e diagnósticos",
+    "isMedical": true,
     "words": [
       {
         "text": "Hemograma",
@@ -1964,6 +1969,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "medicamentos",
     "name": "Medicamentos",
+    "isMedical": true,
     "words": [
       {
         "text": "Adrenalina",
@@ -2030,6 +2036,7 @@ export const INITIAL_CATEGORIES: Category[] = [
   {
     "id": "especialidades-medicas",
     "name": "Especialidades médicas",
+    "isMedical": true,
     "words": [
       {
         "text": "Cardiologia",

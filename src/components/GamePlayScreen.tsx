@@ -7,6 +7,8 @@ interface GamePlayScreenProps {
   secretWord: string;
   starterName: string;
   onRestartGame: () => void;
+  onNewRoundWithSession: () => void;
+  onExitSession: () => void;
 }
 
 export const GamePlayScreen: React.FC<GamePlayScreenProps> = ({
@@ -15,8 +17,11 @@ export const GamePlayScreen: React.FC<GamePlayScreenProps> = ({
   secretWord,
   starterName,
   onRestartGame,
+  onNewRoundWithSession,
+  onExitSession,
 }) => {
   const [isConfirming, setIsConfirming] = useState(false);
+  const [isConfirmingExit, setIsConfirmingExit] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
   const impostors = players.filter((p) => p.isImpostor);
@@ -174,9 +179,21 @@ export const GamePlayScreen: React.FC<GamePlayScreenProps> = ({
 
           {/* Settle and restart buttons */}
           <div style={{ marginTop: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <button className="btn-primary" onClick={onRestartGame}>
-              🎮 Nova Rodada
+            <button className="btn-primary" onClick={onNewRoundWithSession}>
+              🔄 Nova rodada com esta sessão
             </button>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button className="btn-secondary" style={{ flex: 1 }} onClick={onRestartGame}>
+                🏠 Voltar ao início
+              </button>
+              <button 
+                className="btn-secondary" 
+                style={{ flex: 1, borderColor: 'rgba(255, 75, 75, 0.3)', color: '#ff4d4d', background: 'rgba(255, 75, 75, 0.05)' }} 
+                onClick={() => setIsConfirmingExit(true)}
+              >
+                🚪 Sair da sessão
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -204,6 +221,38 @@ export const GamePlayScreen: React.FC<GamePlayScreenProps> = ({
                 onClick={handleConfirmReveal}
               >
                 Sim, Revelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONFIRMATION EXIT SESSAO MODAL */}
+      {isConfirmingExit && (
+        <div className="modal-overlay">
+          <div className="modal-content" style={{ maxWidth: '400px' }}>
+            <div style={{ fontSize: '36px', textAlign: 'center', marginBottom: '12px' }}>🚪</div>
+            <h3 className="modal-title" style={{ textAlign: 'center' }}>Sair da Sessão?</h3>
+            <p className="modal-body" style={{ textAlign: 'center', fontSize: '13.5px', lineHeight: '1.5' }}>
+              Tem certeza que deseja sair da sessão? As configurações desta sessão serão encerradas, mas seus jogadores e categorias salvos continuarão disponíveis.
+            </p>
+            <div className="modal-actions" style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
+              <button 
+                className="btn-secondary" 
+                style={{ flex: 1 }}
+                onClick={() => setIsConfirmingExit(false)}
+              >
+                Cancelar
+              </button>
+              <button 
+                className="btn-accent" 
+                style={{ flex: 1, background: 'linear-gradient(135deg, var(--primary-red) 0%, #d32f2f 100%)', color: 'white', boxShadow: '0 4px 12px rgba(255, 59, 48, 0.2)' }}
+                onClick={() => {
+                  setIsConfirmingExit(false);
+                  onExitSession();
+                }}
+              >
+                Sair da sessão
               </button>
             </div>
           </div>

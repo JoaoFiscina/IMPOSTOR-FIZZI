@@ -1,0 +1,1195 @@
+Categoria: Objetos
+Guarda-chuva | temporal
+Chave | acesso
+Mochila | trajeto
+Relógio | atraso
+Óculos | foco
+Caneta | assinatura
+Caderno | memória
+Garrafa | hidratação
+Fone de ouvido | isolamento
+Carregador | dependência
+Controle remoto | distância
+Almofada | conforto
+Espelho | imagem
+Tesoura | precisão
+Fita adesiva | emenda
+Lanterna | breu
+Bússola | norte
+Carteira | documento
+Moeda | troco
+Calendário | prazo
+Escova | rotina
+Pente | arrumação
+Sabonete | espuma
+Toalha | umidade
+Travesseiro | descanso
+Cobertor | aconchego
+Ventilador | brisa
+Lâmpada | claridade
+Cadeira | postura
+Mesa | apoio
+Prato | porção
+Copo | gole
+Garfo | pontas
+Colher | concha
+Faca | lâmina
+Panela | vapor
+Frigideira | dourado
+Peneira | separação
+Ralador | raspas
+Abridor | vedação
+Martelo | batida
+Parafuso | rosca
+Prego | fixação
+Alicate | aperto
+Trena | medida
+Cadeado | proteção
+Mala | deslocamento
+Capacete | impacto
+Binóculo | alcance
+Apito | sinal
+
+Categoria: Filmes
+Interestelar | tempo
+Titanic | romance
+Shrek | isolamento
+Avatar | conexão
+Cidade de Deus | tensão
+O Poderoso Chefão | família
+Forrest Gump | acaso
+Matrix | escolha
+Toy Story | amizade
+Procurando Nemo | corrente
+O Rei Leão | herança
+Harry Potter e a Pedra Filosofal | escola
+Jurassic Park | ilha
+Vingadores Ultimato | sacrifício
+Homem-Aranha Sem Volta para Casa | identidade
+Coringa | riso
+Parasita | subsolo
+Clube da Luta | insônia
+A Origem | sonho
+Gladiador | arena
+Tropa de Elite | operação
+Central do Brasil | viagem
+Bacurau | resistência
+Que Horas Ela Volta | casa
+Auto da Compadecida | esperteza
+La La Land | palco
+Whiplash | ritmo
+Oppenheimer | teste
+Barbie | plástico
+Duna | areia
+Mad Max Estrada da Fúria | fuga
+Pantera Negra | trono
+Frozen | distância
+Divertida Mente | emoção
+Up Altas Aventuras | balão
+Ratatouille | sabor
+Wall-E | solidão
+Monstros S.A. | porta
+Os Incríveis | família
+A Viagem de Chihiro | banho
+O Senhor dos Anéis | jornada
+Star Wars | força
+Indiana Jones | relíquia
+Piratas do Caribe | bússola
+De Volta para o Futuro | relógio
+E.T. | bicicleta
+O Iluminado | isolamento
+Psicose | chuveiro
+A Lista de Schindler | memória
+12 Homens e uma Sentença | dúvida
+
+Categoria: Séries
+Friends | sofá
+Breaking Bad | química
+Game of Thrones | trono
+Stranger Things | inverso
+The Office | papel
+The Last of Us | fungo
+Dark | ciclo
+Black Mirror | tela
+La Casa de Papel | máscara
+Narcos | cartel
+Peaky Blinders | lâmina
+The Crown | coroa
+Sherlock | dedução
+House | diagnóstico
+Grey's Anatomy | plantão
+How I Met Your Mother | guarda-chuva
+Brooklyn Nine-Nine | delegacia
+Modern Family | família
+The Boys | herói
+Wandinha | sombria
+Loki | variante
+The Mandalorian | capacete
+Better Call Saul | advogado
+Prison Break | tatuagem
+Lost | ilha
+Westworld | consciência
+Succession | herança
+Euphoria | neon
+Round 6 | dívida
+The Witcher | destino
+Vikings | drakkar
+Chernobyl | radiação
+True Detective | pista
+Dexter | código
+Mr. Robot | senha
+Supernatural | sal
+Smallville | origem
+Glee | coral
+Elite | segredo
+Sex Education | consulta
+The Big Bang Theory | física
+You | obsessão
+Bridgerton | baile
+The Bear | cozinha
+Ted Lasso | otimismo
+Rick and Morty | portal
+BoJack Horseman | ressaca
+Arcane | ponte
+One Piece | tesouro
+Doctor Who | cabine
+
+Categoria: Animações e desenhos
+Bob Esponja | abacaxi
+Pica-Pau | risada
+Tom e Jerry | perseguição
+Scooby-Doo | mistério
+Os Simpsons | sofá
+Futurama | entrega
+Hora de Aventura | espada
+Apenas um Show | parque
+Gravity Falls | diário
+Steven Universo | gema
+Ben 10 | relógio
+As Meninas Superpoderosas | açúcar
+Kim Possible | missão
+Os Padrinhos Mágicos | desejo
+Laboratório de Dexter | invenção
+Johnny Bravo | topete
+Coragem o Cão Covarde | medo
+Dragon Ball Z | energia
+Naruto | folha
+Pokémon | captura
+Cavaleiros do Zodíaco | armadura
+Yu-Gi-Oh | duelo
+Avatar A Lenda de Aang | elementos
+A Lenda de Korra | equilíbrio
+Looney Tunes | caos
+Mickey Mouse | luva
+Pateta | trapalhada
+Pato Donald | birra
+Pernalonga | cenoura
+Doraemon | bolso
+O Incrível Mundo de Gumball | azul
+Phineas e Ferb | verão
+Lilo e Stitch | ohana
+Jovens Titãs | torre
+Danny Phantom | fantasma
+Hey Arnold | quarteirão
+Rugrats | bebês
+Doug | diário
+CatDog | duplo
+Recreio | pátio
+Castelo Rá-Tim-Bum | castelo
+Mundo Bita | bigode
+Galinha Pintadinha | pintinhas
+Peppa Pig | poça
+Patrulha Canina | resgate
+Bluey | brincadeira
+Masha e o Urso | bagunça
+Peixonauta | investigação
+Irmão do Jorel | família
+Turma da Mônica | bairro
+
+Categoria: Personagens
+Harry Potter | cicatriz
+Hermione Granger | livro
+Darth Vader | respiração
+Homem-Aranha | responsabilidade
+Batman | noite
+Coringa | caos
+Mulher-Maravilha | laço
+Superman | sol
+Hulk | raiva
+Capitão América | escudo
+Tony Stark | ego
+Thanos | equilíbrio
+Frodo | jornada
+Gandalf | ponte
+Gollum | precioso
+Sherlock Holmes | dedução
+James Bond | missão
+Indiana Jones | relíquia
+Jack Sparrow | bússola
+Elsa | gelo
+Simba | reino
+Mufasa | legado
+Buzz Lightyear | infinito
+Woody | xerife
+Nemo | barbatana
+Dory | memória
+Shrek | pântano
+Burro | fala
+Fiona | segredo
+Gru | minions
+Minion | banana
+Sonic | velocidade
+Mario | encanador
+Luigi | verde
+Link | coragem
+Zelda | reino
+Pikachu | faísca
+Ash Ketchum | boné
+Naruto | persistência
+Sasuke | vingança
+Goku | treino
+Vegeta | orgulho
+Luffy | borracha
+Chaves | barril
+Chapolin | chipote
+Mônica | coelho
+Cebolinha | plano
+Magali | apetite
+Cascão | poeira
+Kiko | bochecha
+
+Categoria: Países
+Brasil | carnaval
+Argentina | tango
+Uruguai | mate
+Chile | cordilheira
+Peru | altitude
+México | pimenta
+Canadá | neve
+Estados Unidos | estrada
+Portugal | azulejo
+Espanha | siesta
+França | perfume
+Itália | massa
+Alemanha | precisão
+Reino Unido | chá
+Irlanda | trevo
+Noruega | fiorde
+Suécia | design
+Finlândia | sauna
+Rússia | inverno
+Ucrânia | trigo
+Grécia | mito
+Turquia | ponte
+Egito | deserto
+Marrocos | mercado
+África do Sul | savana
+Nigéria | ritmo
+Quênia | corrida
+Índia | tempero
+China | muralha
+Japão | sakura
+Coreia do Sul | kpop
+Tailândia | templo
+Vietnã | arroz
+Indonésia | ilhas
+Austrália | outback
+Nova Zelândia | aventura
+Israel | história
+Arábia Saudita | petróleo
+Emirados Árabes | torre
+Catar | duna
+Holanda | bicicleta
+Bélgica | chocolate
+Suíça | relógio
+Áustria | valsa
+Polônia | memória
+Cuba | charuto
+Colômbia | café
+Bolívia | sal
+Paraguai | fronteira
+Jamaica | reggae
+
+Categoria: Comidas brasileiras
+Feijoada | sábado
+Acarajé | dendê
+Moqueca | panela
+Pão de queijo | forno
+Coxinha | massa
+Brigadeiro | festa
+Tapioca | goma
+Cuscuz | milho
+Vatapá | creme
+Bobó de camarão | mandioca
+Carne de sol | sertão
+Baião de dois | mistura
+Escondidinho | camada
+Farofa | crocância
+Pamonha | palha
+Canjica | junho
+Quindim | gema
+Beijinho | coco
+Empadão | recheio
+Pastel | feira
+Caldo verde | couve
+Galinhada | açafrão
+Arroz carreteiro | chapa
+Tacacá | cuia
+Maniçoba | folha
+Tucupi | amarelo
+Peixada | caldo
+Dobradinha | panela
+Sarapatel | tempero
+Rabada | molho
+Angu | creme
+Polenta | amarela
+Bolinho de chuva | infância
+Bolo de rolo | camada
+Romeu e Julieta | dupla
+Cartola | banana
+Cocada | açúcar
+Queijadinha | forma
+Pé de moleque | amendoim
+Paçoca | farinha
+Arroz doce | canela
+Mungunzá | grão
+Caruru | quiabo
+Xinxim de galinha | castanha
+Arrumadinho | feijão
+Virado à paulista | prato
+Leitão à pururuca | crocante
+Tutu de feijão | pasta
+Sagu | bolinha
+Maria-mole | nuvem
+
+Categoria: Comidas do mundo
+Pizza | forno
+Sushi | alga
+Hambúrguer | camada
+Lasanha | recheio
+Taco | tortilha
+Burrito | embrulho
+Paella | açafrão
+Risoto | cremoso
+Ramen | caldo
+Tempurá | crocância
+Curry | especiaria
+Kebab | espeto
+Falafel | grão
+Hummus | pasta
+Croissant | folhado
+Baguete | casca
+Waffle | grade
+Panqueca | massa
+Hot dog | mostarda
+Fish and chips | fritura
+Goulash | páprica
+Fondue | mergulho
+Kimchi | fermento
+Bibimbap | tigela
+Pad thai | amendoim
+Pho | caldo
+Poke | cubos
+Ceviche | cítrico
+Guacamole | abacate
+Nachos | crocante
+Schnitzel | empanado
+Moussaka | berinjela
+Samosa | triângulo
+Naan | pão
+Churros | canela
+Donut | rosca
+Macaron | cor
+Tiramisu | camada
+Cheesecake | creme
+Brownie | denso
+Apple pie | torta
+Pavlova | suspiro
+Baklava | mel
+Gelato | frio
+Sorvete | casquinha
+Nhoque | bolinha
+Carbonara | gema
+Pesto | manjericão
+Couscous marroquino | grão
+Arepa | milho
+
+Categoria: Doces e sobremesas
+Brigadeiro | granulado
+Pudim | calda
+Mousse | leveza
+Bolo de chocolate | fatia
+Bolo de cenoura | cobertura
+Torta de limão | azedo
+Cheesecake | creme
+Brownie | denso
+Cookie | forno
+Cupcake | forma
+Sorvete | casquinha
+Açaí | tigela
+Petit gâteau | centro
+Pavê | camada
+Gelatina | tremor
+Manjar | coco
+Quindim | gema
+Cocada | fibra
+Paçoca | farelo
+Pé de moleque | quebra
+Canjica | milho
+Arroz doce | canela
+Churros | recheio
+Waffle | grade
+Panqueca doce | dobrada
+Crepe | fino
+Macaron | delicado
+Tiramisu | café
+Profiteroles | massa
+Éclair | comprido
+Mil-folhas | lâmina
+Bomba de chocolate | creme
+Sonho | padaria
+Rabanada | fatia
+Banoffee | banana
+Romeu e Julieta | contraste
+Cartola | dourado
+Bolo de rolo | espiral
+Torta alemã | gelada
+Palha italiana | quadrado
+Doce de leite | colher
+Goiabada | vermelha
+Suspiro | nuvem
+Marshmallow | macio
+Algodão-doce | parque
+Picolé | palito
+Milkshake | canudo
+Sagu | pérola
+Creme brûlée | crosta
+Panna cotta | branco
+
+Categoria: Bebidas
+Café | amargo
+Chá | infusão
+Suco de laranja | cítrico
+Limonada | azedo
+Água de coco | praia
+Refrigerante | gás
+Guaraná | brasilidade
+Mate | roda
+Achocolatado | infância
+Milkshake | canudo
+Vitamina de banana | creme
+Caldo de cana | feira
+Açaí batido | tigela
+Smoothie | fruta
+Energético | estímulo
+Isotônico | treino
+Kombucha | fermento
+Cappuccino | espuma
+Espresso | curto
+Latte | leite
+Mocha | chocolate
+Frappuccino | gelo
+Chá verde | leveza
+Chá de hibisco | vermelho
+Chá de camomila | calma
+Suco de uva | roxo
+Suco de maracujá | calma
+Suco de abacaxi | tropical
+Suco de melancia | verão
+Suco detox | verde
+Água com gás | bolha
+Água tônica | amargor
+Lassi | iogurte
+Horchata | canela
+Bubble tea | pérola
+Chocolate quente | inverno
+Café gelado | cubo
+Leite | branco
+Coalhada | azedo
+Yakult | frasco
+Toddynho | caixinha
+Nescau | achocolatado
+Gatorade | cor
+Água mineral | garrafa
+Suco de manga | polpa
+Suco de caju | castanha
+Suco de acerola | vitamina
+Chimarrão | cuia
+Tereré | gelado
+Café coado | filtro
+
+Categoria: Celebridades brasileiras
+Anitta | poder
+Ivete Sangalo | energia
+Caetano Veloso | tropicália
+Gilberto Gil | guitarra
+Chico Buarque | letra
+Gal Costa | voz
+Marisa Monte | suavidade
+Ludmilla | pagode
+Pabllo Vittar | palco
+Sandy | dupla
+Xuxa | nave
+Silvio Santos | aviãozinho
+Faustão | domingo
+Fernanda Montenegro | teatro
+Selton Mello | cinema
+Taís Araújo | presença
+Lázaro Ramos | narrativa
+Débora Falabella | novela
+Tony Ramos | bigode
+Glória Pires | drama
+Paolla Oliveira | carnaval
+Bruna Marquezine | moda
+Neymar | drible
+Marta | rainha
+Ayrton Senna | velocidade
+Gisele Bündchen | passarela
+Rodrigo Santoro | hollywood
+Wagner Moura | intensidade
+Seu Jorge | grave
+Emicida | rima
+Mano Brown | rua
+Djavan | melodia
+Roberto Carlos | emoção
+Elis Regina | força
+Cazuza | exagero
+Renato Russo | poesia
+Rita Lee | rebeldia
+Zeca Pagodinho | roda
+Jorge Ben Jor | swing
+Tim Maia | síndico
+Nando Reis | ruivo
+Larissa Manoela | juvenil
+Maisa | carisma
+Tatá Werneck | improviso
+Fábio Porchat | humor
+Whindersson Nunes | piauí
+Juliette | cacto
+Sabrina Sato | irreverência
+Angélica | loira
+Luciano Huck | caldeirão
+
+Categoria: Celebridades internacionais
+Beyoncé | realeza
+Taylor Swift | era
+Rihanna | diamante
+Lady Gaga | teatro
+Adele | balada
+Shakira | quadril
+Madonna | reinvenção
+Michael Jackson | luva
+Elvis Presley | topete
+Freddie Mercury | palco
+Harry Styles | estilo
+Billie Eilish | sussurro
+Bruno Mars | groove
+The Weeknd | neon
+Drake | toronto
+Eminem | velocidade
+Kanye West | polêmica
+Ariana Grande | agudo
+Dua Lipa | dança
+Miley Cyrus | transformação
+Leonardo DiCaprio | oscar
+Brad Pitt | carisma
+Angelina Jolie | ação
+Meryl Streep | versatilidade
+Tom Cruise | corrida
+Johnny Depp | excentricidade
+Will Smith | carisma
+Denzel Washington | presença
+Robert Downey Jr. | ironia
+Scarlett Johansson | voz
+Zendaya | elegância
+Timothée Chalamet | delicadeza
+Ryan Reynolds | sarcasmo
+Hugh Jackman | garras
+Keanu Reeves | calma
+Dwayne Johnson | rocha
+Jackie Chan | acrobacia
+Snoop Dogg | relaxado
+Oprah Winfrey | entrevista
+Ellen DeGeneres | talk
+Kim Kardashian | imagem
+Kylie Jenner | cosmético
+Cristiano Ronaldo | disciplina
+Lionel Messi | controle
+Serena Williams | força
+Usain Bolt | raio
+Michael Jordan | salto
+LeBron James | domínio
+Stephen Curry | arremesso
+Lewis Hamilton | pista
+
+Categoria: Animais
+Cachorro | lealdade
+Gato | mistério
+Leão | juba
+Tigre | listra
+Elefante | memória
+Girafa | altura
+Zebra | padrão
+Rinoceronte | chifre
+Hipopótamo | rio
+Macaco | travessura
+Gorila | força
+Panda | bambu
+Urso polar | gelo
+Canguru | salto
+Coala | eucalipto
+Lobo | alcateia
+Raposa | astúcia
+Cavalo | galope
+Vaca | pasto
+Ovelha | lã
+Porco | lama
+Galinha | terreiro
+Pato | lago
+Águia | altitude
+Coruja | noite
+Papagaio | repetição
+Tucano | bico
+Flamingo | equilíbrio
+Pinguim | marcha
+Golfinho | inteligência
+Baleia | profundidade
+Tubarão | barbatana
+Polvo | tentáculo
+Caranguejo | lateral
+Tartaruga | casco
+Jacaré | pântano
+Cobra | silêncio
+Sapo | brejo
+Camaleão | mudança
+Borboleta | transformação
+Abelha | colmeia
+Formiga | trabalho
+Aranha | teia
+Escorpião | ferrão
+Morcego | eco
+Rato | esconderijo
+Coelho | orelha
+Hamster | roda
+Peixe-palhaço | recife
+Cavalo-marinho | curva
+
+Categoria: Profissões
+Médico | plantão
+Professor | quadro
+Advogado | argumento
+Engenheiro | cálculo
+Arquiteto | planta
+Dentista | sorriso
+Veterinário | patas
+Psicólogo | escuta
+Enfermeiro | cuidado
+Farmacêutico | balcão
+Piloto | altitude
+Comissário | embarque
+Motorista | rota
+Cozinheiro | tempero
+Garçom | bandeja
+Barista | grão
+Padeiro | massa
+Jornalista | pauta
+Fotógrafo | enquadramento
+Designer | forma
+Programador | código
+Influenciador | alcance
+Ator | cena
+Cantor | voz
+Músico | ritmo
+Dançarino | movimento
+Bombeiro | sirene
+Policial | ronda
+Detetive | pista
+Juiz | martelo
+Promotor | acusação
+Cientista | hipótese
+Biólogo | vida
+Químico | reação
+Físico | energia
+Astronauta | órbita
+Marinheiro | convés
+Agricultor | terra
+Pescador | rede
+Pedreiro | cimento
+Eletricista | fio
+Encanador | cano
+Mecânico | motor
+Cabeleireiro | tesoura
+Maquiador | pincel
+Costureiro | agulha
+Bibliotecário | estante
+Tradutor | idioma
+Terapeuta | acolhimento
+Nutricionista | cardápio
+
+Categoria: Marcas
+Nike | movimento
+Adidas | listra
+Puma | salto
+Apple | minimalismo
+Samsung | tela
+Microsoft | janela
+Google | busca
+Amazon | caixa
+Netflix | maratona
+Disney | castelo
+Pixar | lâmpada
+Coca-Cola | vermelho
+Pepsi | bolha
+McDonald's | arcos
+Burger King | chama
+Starbucks | sirene
+Subway | sanduíche
+KFC | balde
+Nestlé | ninho
+Lacta | roxo
+Garoto | caixa
+Havaianas | chinelo
+O Boticário | perfume
+Natura | essência
+Avon | revista
+L'Oréal | beleza
+Gucci | luxo
+Louis Vuitton | monograma
+Chanel | clássico
+Prada | passarela
+Zara | vitrine
+Shein | carrinho
+Toyota | confiabilidade
+Honda | motor
+Volkswagen | popular
+Ferrari | velocidade
+Tesla | bateria
+Jeep | trilha
+Lego | encaixe
+Barbie | rosa
+PlayStation | controle
+Xbox | verde
+Nintendo | diversão
+Spotify | playlist
+YouTube | vídeo
+Instagram | feed
+WhatsApp | mensagem
+Uber | corrida
+iFood | entrega
+Nubank | roxo
+
+Categoria: Música e artistas
+Beatles | invasão
+Queen | ópera
+ABBA | brilho
+Coldplay | pulseira
+U2 | estádio
+Rolling Stones | língua
+Nirvana | grunge
+Red Hot Chili Peppers | califórnia
+Metallica | peso
+Pink Floyd | prisma
+Arctic Monkeys | jaqueta
+Imagine Dragons | arena
+Maroon 5 | pop
+Backstreet Boys | boyband
+Spice Girls | girlpower
+Beyoncé | reinado
+Taylor Swift | diário
+Rihanna | brilho
+Lady Gaga | performance
+Adele | saudade
+Michael Jackson | passo
+Madonna | ícone
+Elvis Presley | quadril
+Bob Marley | paz
+Amy Winehouse | grave
+Frank Sinatra | terno
+Billie Eilish | verde
+Dua Lipa | discoteca
+The Weeknd | madrugada
+Bruno Mars | retrô
+Anitta | favela
+Ivete Sangalo | trio
+Caetano Veloso | bahia
+Gilberto Gil | tropicália
+Chico Buarque | poesia
+Marisa Monte | delicadeza
+Djavan | azul
+Tim Maia | soul
+Jorge Ben Jor | swing
+Elis Regina | intensidade
+Cazuza | exagero
+Renato Russo | geração
+Rita Lee | irreverência
+Ludmilla | baile
+Pabllo Vittar | drag
+Sandy | melodia
+Seu Jorge | barítono
+Emicida | verso
+Mano Brown | periferia
+Zeca Pagodinho | resenha
+
+Categoria: Anatomia
+Hipocampo | lembrança
+Amígdala | alarme
+Cerebelo | coordenação
+Pâncreas | secreção
+Fígado | metabolismo
+Baço | defesa
+Córtex cerebral | camada
+Tálamo | estação
+Hipotálamo | controle
+Miocárdio | bomba
+Pulmão | troca
+Rim | filtração
+Adrenal | tensão
+Medula espinhal | via
+Retina | captação
+Córnea | transparência
+Íris | cor
+Cristalino | ajuste
+Cóclea | espiral
+Tímpano | vibração
+Esôfago | passagem
+Estômago | ácido
+Duodeno | início
+Jejuno | absorção
+Íleo | terminal
+Cólon | trânsito
+Reto | reservatório
+Apêndice | pequeno
+Vesícula biliar | reserva
+Diafragma | movimento
+Traqueia | conduto
+Brônquio | ramificação
+Alvéolo | interface
+Aorta | eixo
+Veia cava | retorno
+Átrio direito | entrada
+Ventrículo esquerdo | força
+Válvula mitral | folheto
+Músculo bíceps | flexão
+Tendão de Aquiles | impulso
+Fêmur | sustentação
+Patela | alavanca
+Tíbia | canela
+Úmero | braço
+Escápula | asa
+Clavícula | ponte
+Mandíbula | mordida
+Maxila | face
+Pelve | anel
+Sacro | base
+
+Categoria: Doenças clássicas
+Tuberculose | caverna
+Diabetes | glicose
+Hipertensão | pressão
+Asma | chiado
+Pneumonia | consolidação
+Apendicite | migração
+Dengue | plaqueta
+Anemia | palidez
+AVC | déficit
+Infarto | isquemia
+Meningite | rigidez
+Sepse | perfusão
+Cirrose | fibrose
+Trombose venosa profunda | panturrilha
+Hanseníase | sensibilidade
+Leishmaniose | ferida
+Esquistossomose | portal
+Doença de Chagas | barbeiro
+HIV | imunidade
+Sífilis | estágio
+Gonorreia | secreção
+Clamídia | silenciosa
+Candidíase | prurido
+Herpes zoster | dermátomo
+Varicela | vesícula
+Sarampo | exantema
+Rubéola | linfonodo
+Caxumba | parótida
+COVID-19 | anosmia
+Influenza | mialgia
+Bronquiolite | sibilância
+DPOC | tabaco
+Insuficiência cardíaca | congestão
+Arritmia | ritmo
+Endocardite | sopro
+Colecistite | Murphy
+Pancreatite | enzima
+Úlcera péptica | queimação
+Hepatite | transaminase
+Doença renal crônica | uremia
+Glomerulonefrite | hematúria
+Pielonefrite | flanco
+Cistite | urgência
+Artrite reumatoide | rigidez
+Lúpus | autoimune
+Gota | cristal
+Osteoporose | fragilidade
+Depressão | anedonia
+Ansiedade | antecipação
+Epilepsia | descarga
+
+Categoria: Emergências médicas
+Parada cardiorrespiratória | compressão
+Anafilaxia | adrenalina
+Choque séptico | lactato
+Pneumotórax hipertensivo | desvio
+Tamponamento cardíaco | pulso
+Crise convulsiva | descarga
+Hipoglicemia | sudorese
+AVC isquêmico | janela
+Infarto agudo do miocárdio | troponina
+Tromboembolismo pulmonar | dispneia
+Trauma cranioencefálico | Glasgow
+Queimadura grave | superfície
+Cetoacidose diabética | cetona
+Edema agudo de pulmão | espuma
+Intoxicação exógena | antídoto
+Choque hipovolêmico | volume
+Choque anafilático | urticária
+Choque cardiogênico | bomba
+Dissecção de aorta | rasgo
+Hemorragia digestiva alta | melena
+Hemorragia digestiva baixa | sangue
+Apendicite complicada | peritônio
+Obstrução intestinal | distensão
+Volvo | torção
+Isquemia mesentérica | desproporção
+Abdome agudo perfurativo | ar
+Crise asmática grave | sibilo
+Estado de mal epiléptico | tempo
+Hipercalemia | onda
+Hiponatremia grave | confusão
+Trauma torácico | mecânica
+Trauma abdominal | sangramento
+Fratura exposta | contaminação
+Síndrome compartimental | pressão
+Sepse neonatal | instabilidade
+Meningococcemia | púrpura
+Crise hipertensiva | alvo
+Eclâmpsia | convulsão
+Descolamento prematuro de placenta | útero
+Ruptura uterina | cicatriz
+Afogamento | aspiração
+Choque elétrico | corrente
+Insolação | temperatura
+Hipotermia | tremor
+Rabdomiólise | mioglobina
+Acidente ofídico | veneno
+Escorpionismo | autonômico
+Cetoacidose alcoólica | jejum
+Sangramento intracraniano | pressão
+Obstrução de via aérea | silêncio
+
+Categoria: Cirurgia
+Apendicectomia | fossa
+Colecistectomia | bile
+Herniorrafia | tela
+Laparotomia | acesso
+Drenagem torácica | selo
+Debridamento | necrose
+Fasciotomia | compartimento
+Anastomose | união
+Ileostomia | estoma
+Traqueostomia | via
+Toracotomia | tórax
+Amputação | coto
+Hemostasia | controle
+Abscesso | coleção
+Peritonite | defesa
+Colectomia | cólon
+Gastrectomia | estômago
+Esplenectomia | baço
+Hepatectomia | parênquima
+Pancreatectomia | enzima
+Mastectomia | mama
+Tireoidectomia | pescoço
+Paratireoidectomia | cálcio
+Safenectomia | veia
+Bypass gástrico | desvio
+Sleeve gástrico | tubo
+Fundoplicatura | refluxo
+Vagotomia | ácido
+Piloroplastia | saída
+Colostomia | derivação
+Toracoscopia | vídeo
+Laparoscopia | porta
+Artroscopia | articulação
+Craniotomia | osso
+Cesariana | parto
+Curetagem | cavidade
+Histerectomia | útero
+Ooforectomia | ovário
+Prostatectomia | próstata
+Nefrectomia | rim
+Litotripsia | cálculo
+Drenagem de abscesso | alívio
+Sutura | aproximação
+Enxerto de pele | cobertura
+Retalho | rotação
+Correção de aneurisma | prótese
+Endarterectomia | placa
+Embolectomia | êmbolo
+Fixação externa | haste
+Redução de fratura | alinhamento
+
+Categoria: Exames e diagnósticos
+Hemograma | células
+Gasometria | pH
+Troponina | lesão
+Eletrocardiograma | traçado
+Radiografia | sombra
+Tomografia | corte
+Ressonância magnética | campo
+Ultrassonografia | eco
+Colonoscopia | lúmen
+Endoscopia | câmera
+PCR | inflamação
+Creatinina | filtração
+Bilirrubina | pigmento
+D-dímero | fibrina
+Lactato | perfusão
+Ureia | nitrogênio
+Sódio | osmose
+Potássio | membrana
+Cálcio | contração
+Magnésio | estabilidade
+TGO | hepatócito
+TGP | enzima
+Fosfatase alcalina | colestase
+Gama-GT | bile
+Albumina | síntese
+INR | coagulação
+TTPa | via
+Fibrinogênio | rede
+Glicemia | energia
+Hemoglobina glicada | média
+TSH | eixo
+T4 livre | metabolismo
+Beta-HCG | gestação
+Urocultura | crescimento
+EAS | sedimento
+Coprocultura | fezes
+Parasitológico | ovo
+Sorologia | anticorpo
+Teste rápido | triagem
+Biópsia | fragmento
+Papanicolau | colo
+Mamografia | rastreamento
+Densitometria | mineral
+Espirometria | fluxo
+Ecocardiograma | fração
+Holter | registro
+MAPA | pressão
+Teste ergométrico | esforço
+Angiotomografia | vaso
+Cintilografia | traçador
+
+Categoria: Medicamentos
+Adrenalina | resgate
+Noradrenalina | vaso
+Morfina | alívio
+Dipirona | temperatura
+Ceftriaxona | amplo
+Vancomicina | parede
+Heparina | coágulo
+Insulina | controle
+Furosemida | diurese
+Omeprazol | ácido
+Salbutamol | brônquio
+Prednisona | inflamação
+Amoxicilina | infecção
+Diazepam | calma
+Metformina | resistência
+Losartana | eixo
+Captopril | enzima
+Anlodipino | canal
+Atenolol | freio
+Hidroclorotiazida | sal
+Sinvastatina | lipídio
+AAS | plaqueta
+Clopidogrel | agregação
+Varfarina | vitamina
+Rivaroxabana | fator
+Enoxaparina | ponte
+Azitromicina | atípico
+Clindamicina | anaeróbio
+Metronidazol | odor
+Meropenem | reserva
+Piperacilina-tazobactam | hospital
+Fluconazol | fungo
+Aciclovir | vírus
+Oseltamivir | gripe
+Albendazol | parasita
+Ivermectina | verme
+Ondansetrona | náusea
+Metoclopramida | movimento
+Loperamida | trânsito
+Lactulose | amônia
+Haloperidol | agitação
+Quetiapina | sono
+Sertralina | humor
+Fluoxetina | ânimo
+Amitriptilina | dor
+Carbamazepina | disparo
+Fenitoína | canal
+Levetiracetam | convulsão
+Propofol | indução
+Cetamina | dissociação
+
+Categoria: Especialidades médicas
+Cardiologia | pulso
+Neurologia | circuito
+Cirurgia geral | bisturi
+Pediatria | crescimento
+Ginecologia | ciclo
+Obstetrícia | nascimento
+Dermatologia | mancha
+Psiquiatria | comportamento
+Ortopedia | eixo
+Oftalmologia | foco
+Otorrinolaringologia | via
+Urologia | fluxo
+Reumatologia | rigidez
+Infectologia | contágio
+Radiologia | contraste
+Anestesiologia | bloqueio
+Medicina intensiva | suporte
+Emergência | triagem
+Medicina de família | vínculo
+Endocrinologia | hormônio
+Gastroenterologia | digestão
+Hepatologia | bile
+Nefrologia | diálise
+Pneumologia | ventilação
+Hematologia | medula
+Oncologia | proliferação
+Geriatria | fragilidade
+Neonatologia | adaptação
+Medicina fetal | rastreamento
+Mastologia | mama
+Coloproctologia | assoalho
+Cirurgia vascular | fluxo
+Neurocirurgia | crânio
+Cirurgia torácica | mediastino
+Cirurgia pediátrica | malformação
+Cirurgia plástica | reconstrução
+Cirurgia oncológica | margem
+Cirurgia cardíaca | circulação
+Medicina nuclear | traçador
+Patologia | lâmina
+Medicina legal | laudo
+Genética médica | herança
+Alergologia | hipersensibilidade
+Imunologia | defesa
+Medicina esportiva | desempenho
+Nutrologia | metabolismo
+Cuidados paliativos | conforto
+Fisiatria | reabilitação
+Medicina do trabalho | risco
+Epidemiologia | população

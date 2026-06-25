@@ -101,7 +101,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
         <div className="card-glass" style={{ background: 'rgba(255,255,255,0.01)', borderStyle: 'dashed' }}>
           <h4 style={{ fontSize: '14px', color: 'white', marginBottom: '6px' }}>Sobre o IMPOSTOR FIZZI</h4>
           <p style={{ color: 'var(--text-muted)', fontSize: '12px', lineHeight: '1.4' }}>
-            Versão: 2.0.0 (Modo Dica)<br />
+            Versão: 23.09.0001<br />
             Este aplicativo roda 100% no seu dispositivo local e funciona offline após o primeiro acesso.
           </p>
         </div>

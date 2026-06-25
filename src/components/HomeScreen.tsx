@@ -155,6 +155,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           }} />
         </div>
       </div>
+      <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '10px', color: 'var(--text-muted)', opacity: 0.5 }}>
+        v23.09.0001
+      </div>
     </div>
   );
 };

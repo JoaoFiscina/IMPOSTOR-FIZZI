@@ -158,9 +158,28 @@ export const RevealScreen: React.FC<RevealScreenProps> = ({
                         </div>
                       </div>
                     ) : (
-                      <p style={{ color: 'var(--text-muted)', fontSize: '13.5px', marginTop: '16px', maxWidth: '280px', lineHeight: '1.4' }}>
-                        Se misture entre os jogadores comuns e tente descobrir a palavra secreta!
-                      </p>
+                      <>
+                        <div 
+                          style={{ 
+                            marginTop: '20px', 
+                            background: 'rgba(255, 59, 48, 0.1)', 
+                            border: '1px solid rgba(255, 59, 48, 0.2)', 
+                            padding: '14px 16px', 
+                            borderRadius: '16px', 
+                            fontSize: '14.5px', 
+                            color: '#fca5a5',
+                            lineHeight: '1.5',
+                            textAlign: 'left'
+                          }}
+                        >
+                          <div>
+                            <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Categoria:</span> <strong>{categoryName}</strong>
+                          </div>
+                        </div>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '13.5px', marginTop: '16px', maxWidth: '280px', lineHeight: '1.4', marginLeft: 'auto', marginRight: 'auto' }}>
+                          Se misture entre os jogadores comuns e tente descobrir a palavra secreta!
+                        </p>
+                      </>
                     )}
                   </div>
                 ) : (
